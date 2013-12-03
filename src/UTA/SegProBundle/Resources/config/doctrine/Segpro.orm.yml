@@ -1,0 +1,42 @@
+UTA\SegProBundle\Entity\Segpro:
+  type: entity
+  repositoryClass: UTA\SegProBundle\Entity\SegproRepository
+  table: segpro
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    identificador:
+      type: string
+      length: 255
+      nullable: false
+    nombre:
+      type: string
+      length: 255
+      nullable: true
+  lifecycleCallbacks: 
+  oneToOne:
+    fuente:
+      targetEntity: UTA\SegProBundle\Entity\Fuentedefinanciamiento
+      joinColumns:
+        fuente_id:
+          referencedColumnName: id
+          unique: true
+    ficha:
+      targetEntity: UTA\SegProBundle\Entity\Fichaproyecto
+      joinColumns:
+        ficha_id:
+          referencedColumnName: id
+          unique: true
+  oneToMany:
+    actividades:
+      targetEntity: UTA\SegProBundle\Entity\Actividad
+      mappedBy: segpros
+      cascade: [persist, remove]
+  manyToMany:
+    users:
+      targetEntity: UTA\SegProBundle\Entity\Usuario
+      mappedBy: segprouser
+      cascade: [persist, remove]

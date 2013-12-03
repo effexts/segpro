@@ -1,0 +1,47 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Actividad</h1>
+    {% endblock %}
+    {% block content %}
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechainicio</th>
+                <th>Fechacomprometidatermino</th>
+                <th>Fechatermino</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.fechainicio %}{{ entity.fechainicio|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>{% if entity.fechacomprometidatermino %}{{ entity.fechacomprometidatermino|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>{% if entity.fechatermino %}{{ entity.fechatermino|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_actividad_show', { 'id': entity.id }) }}">Mostrar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_actividad_edit', { 'id': entity.id }) }}">Editar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_actividad_new') }}">
+                Agregar nuevo registro
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

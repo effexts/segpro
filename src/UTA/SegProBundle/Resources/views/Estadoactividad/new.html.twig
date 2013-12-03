@@ -1,0 +1,23 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Agregar Estado de Actividad</h1>
+    {% endblock %}
+            
+{% block content %}
+    <form action="{{ path('admin_estadoactividad_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Agregar</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_estadoactividad') }}">
+                Volver a la lista
+            </a>
+        </li>
+    </ul>
+{% endblock %}

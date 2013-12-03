@@ -1,0 +1,27 @@
+UTA\SegProBundle\Entity\Objetivos:
+  type: entity
+  table: objetivos
+  id:
+    id:
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: AUTO
+  fields:
+    tipoobj:
+      type: string
+      length: 1
+      nullable: false
+      column: tipoObj
+    descripcion:
+      type: text
+      nullable: false
+  lifecycleCallbacks: 
+  manyToOne:
+    idFicha:
+      targetEntity: UTA\SegProBundle\Entity\Fichaproyecto
+      inversedBy: objetivos
+      joinColumns:
+        idFicha_id:
+          referencedColumnName: id

@@ -1,0 +1,133 @@
+{% extends 'UTASegProBundle::layout.html.twig' %}
+
+        {% block sidebar %}
+            <div class="large-4 small-12 columns">
+            
+                <div class="panel">
+                    <h3>Nombre:</h3>
+                    <h5 class="subheader">{{ proyecto.ficha.nombre }}</h5>
+                </div>
+                <ul class="side-nav">
+                    <li class="active">
+                        <a href="{{ path('uta_segpro_resumen_proyecto', {'id': proyecto.id}) }}">Visualizaci&oacute;n General</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('uta_segpro_statsporproyecto', {'id':proyecto.id}) }}">Estad&iacute;sticas</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">An&aacute;lisis Financiero</a>
+                    </li>
+                    <li>
+                        <a href="#">An&aacute;lisis de Actividades</a>
+                    </li>
+                </ul>
+                        
+            </div>
+        {% endblock %}
+
+{% block proyectos %}
+
+
+  <table>
+      <tr>
+        <th colspan="2">Identificador</th>
+        <td colspan="2">{{ proyecto.identificador }}</td>
+      </tr>
+      <tr>
+        <th>Monto</th>
+        <td>${{ proyecto.ficha.montoadjudicado|number_format(0, ',', '.') }}</td>
+        <th>Fecha Postulación</th>
+        <td>{{ proyecto.ficha.fechapostulacion|date("d-m-Y", "America/Santiago") }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Inicio</th>
+        <td>{{ proyecto.ficha.fechainicio|date("d-m-Y", "America/Santiago") }}</td>
+        <th>Fecha de Término</th>
+        <td>{{ proyecto.ficha.fechatermino|date("d-m-Y", "America/Santiago") }}</td>          
+      </tr>
+
+  </table>
+
+<h5>Actividades</h5>
+  <table id="agregar-actividades">
+  {% if proyecto.actividades is empty %}
+    <thead id="acts_empty">
+      <th>No existen actividades de este proyecto aún.</th>
+    </thead>
+  {% endif %}
+
+  {% if proyecto.actividades is not empty %}
+   
+    <thead>
+      <th>N° Actividad</th>
+      <th>Identificador</th>
+      <th>Monto</th>
+      <th>Fecha Comprometida</th>
+      <th>Fecha Término</th>
+      <th>Estado</th>
+    </thead>
+    
+    {% for actividad in proyecto.actividades %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ actividad.identificador }}</td>
+      <td>${{ actividad.monto|number_format(0,',','.') }}</td>
+      <td>{{ actividad.fechacomprometidatermino|date("d/m/Y","America/Santiago") }}</td>
+      <td>{{ actividad.fechatermino|date("d/m/Y","America/Santiago") }}</td>
+      <td>{{ actividad.estado }}</td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+    </table>
+    
+    <div class="btn-add-actividad">
+      <a href="#" class="button btn-mini btn-info add_actividad_link"><i class="icon-plus icon-white">Agregar una Actividad</i></a>
+    </div>
+    
+  {% block _user_addresses_addresses_entry_row %}
+    {% spaceless %}
+          <div id="dialog" class="row">
+              <form action="{{ path('uta_segpro_resumen_proyecto', {'id':proyecto.id}) }}" >
+                  {{ form_widget(form) }}
+
+
+                  <div class="form-actions">
+                      <a href="#" class="enviarform button success">
+                          Enviar
+                      </a>
+                  </div>
+              </form>
+          </div>
+    {% endspaceless %}
+  {% endblock %}
+
+
+      <script>
+      $('.enviarform').click(function(event) {
+          
+            $('form').unbind('submit');
+            var $url = $('form').attr('action');
+            var $data = $('form').serialize();
+
+            $.ajax({
+                type: "POST",
+                url: $url,
+                data: $data
+            }).done(function( result ) {
+                    if(result.success) {
+                      if($('#acts_empty').length)
+                          $('#acts_empty').replaceWith('<thead><th>N° Actividad</th><th>Identificador</th><th>Monto</th><th>Fecha Comprometida</th><th>Fecha Término</th><th>Estado</th></thead>');
+                      $('#agregar-actividades').append('<tr><td>'+ result.id +'</td><td>'+ result.identificador +'</td><td>'+ format1(result.monto, "$")+'</td><td>'+ result.fechacomprometidatermino +'</td><td>'+ result.fechatermino +'</td><td>'+ result.estado +'</td></tr>');
+                     }
+                });
+            $('#dialog').dialog('close');
+    });
+      </script>
+
+
+
+{% endblock %}
+
+{% block algo %}
+{% endblock %}

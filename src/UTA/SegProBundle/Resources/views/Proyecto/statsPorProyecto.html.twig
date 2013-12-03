@@ -1,0 +1,58 @@
+{% extends 'UTASegProBundle::layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
+<script type="text/javascript">
+	$(function(){
+		Highcharts.setOptions({
+		    lang: {
+		        decimalPoint: ',',
+		        thousandsSep: '.',
+		        downloadJPEG: 'Descargar como JPEG',
+		        downloadPDF: 'Descargar como PDF',
+		        downloadPNG: 'Descargar como PNG',
+		        downloadSVG: 'Descargar como SVG',
+		        printChart: 'Imprimir gráfico'
+		    }
+		});
+	    {{ chart(chart, false) }}
+	
+	})
+
+</script>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="large-4 small-12 columns">
+
+        <div class="panel">
+            <h3>Nombre:</h3>
+            <h5 class="subheader">{{ proyecto.ficha.nombre }}</h5>
+            <h5 class="subheader">{{ proyecto.fuente.nombre }}</h5>
+        </div>
+        <ul class="side-nav">
+            <li>
+                <a href="{{ path('uta_segpro_resumen_proyecto', {'id': proyecto.id}) }}">Visualizaci&oacute;n General</a>
+            </li>
+            <li class="active">
+                <a href="{{ path('uta_segpro_statsporproyecto', {'id':proyecto.id}) }}">Estad&iacute;sticas</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">An&aacute;lisis Financiero</a>
+            </li>
+            <li>
+                <a href="#">An&aacute;lisis de Actividades</a>
+            </li>
+        </ul>
+
+    </div>
+{% endblock %}
+
+{% block proyectos %}
+	<div id="grafico" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+{% endblock %}
+{% block algo %}
+{% endblock %}

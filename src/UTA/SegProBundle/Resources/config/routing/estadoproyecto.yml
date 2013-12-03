@@ -1,0 +1,30 @@
+admin_estadoproyecto:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:index" }
+
+admin_estadoproyecto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:show" }
+
+admin_estadoproyecto_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:new" }
+
+admin_estadoproyecto_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:create" }
+    requirements: { _method: post }
+
+admin_estadoproyecto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:edit" }
+
+admin_estadoproyecto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:update" }
+    requirements: { _method: post|put }
+
+admin_estadoproyecto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Estadoproyecto:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,29 @@
+parameters:
+#    uta_seg_pro.example.class: UTA\SegProBundle\Example
+
+services:
+#    uta_seg_pro.example:
+#        class: %uta_seg_pro.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#    form.type.datePicker:
+#        class: UTA\SegProBundle\Form\Type\DatePickerType
+#        tags:
+#            - { name: form.type, alias: datePicker}
+#    form.type.dateTimePicker:
+#        class: UTA\SegProBundle\Form\Type\DateTimePickerType
+#        tags:
+#            - { name: form.type, alias: dateTimePicker }
+    # the menu builder service. Can be used for several menus
+    UTASegPro.menu_builder:
+        class: UTA\SegProBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    # your menu
+    UTASegPro.menu.breadcrumb:
+        class: Knp\Menu\MenuItem
+        factory_service: UTASegPro.menu_builder # the menu builder service above
+        factory_method: createBreadcrumbMenu # the method name to generate the menu
+        arguments: ["@request"]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: breadcrumb } # The alias is used in the template

@@ -1,0 +1,48 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Usuario</h1>
+    {% endblock %}
+    {% block content %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ entity.apellido }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_usuario') }}">
+                Volver a la lista
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">
+                Editar
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_usuario_Eliminar', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="Eliminar" />
+                {{ form_widget(Eliminar_form) }}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    </ul>
+    {% endblock %}

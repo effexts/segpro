@@ -1,0 +1,30 @@
+admin_fichaproyecto:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:index" }
+
+admin_fichaproyecto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:show" }
+
+admin_fichaproyecto_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:new" }
+
+admin_fichaproyecto_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:create" }
+    requirements: { _method: post }
+
+admin_fichaproyecto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:edit" }
+
+admin_fichaproyecto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:update" }
+    requirements: { _method: post|put }
+
+admin_fichaproyecto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Fichaproyecto:delete" }
+    requirements: { _method: post|delete }

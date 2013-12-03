@@ -1,0 +1,57 @@
+security:
+    encoders:
+        UTA\SegProBundle\Entity\Usuario: sha512
+#        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+#        ROLE_ADMINISTRATIVO: IS_AUTHENTICATED_ANONYMOUSLY
+        ROLE_DIRECTORPROY: ROLE_ADMINISTRATIVO
+        ROLE_DDP: ROLE_DIRECTORPROY
+        ROLE_DIPLAN: ROLE_DDP
+        ROLE_SUPER_ADMIN: ROLE_DIPLAN
+
+    providers:
+        administrators:
+            entity: { class: UTASegProBundle:Usuario, property: username }
+#        in_memory:
+#            memory:s
+#                users:
+#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login_firewall:
+            pattern:    ^/login$
+            anonymous:  ~
+        admin_firewall:
+            pattern: ^/admin
+            anonymous: ~
+#        login:
+#            pattern:  ^/demo/secured/login$
+#            security: false
+
+        secured_area:
+            pattern:    ^/
+            form_login: ~
+#                check_path: _security_check
+#                login_path: _demo_login
+            logout:
+                path:   /logout
+                target: /
+#        sistema:
+#            pattern:    ^/
+#            http_basic: ~
+            #anonymous: ~
+            #http_basic:
+#              realm: "Secured Demo Area"
+
+    access_control:
+        #- { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_ADMINISTRATIVO }
+
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

@@ -1,0 +1,27 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Agregar Actividad</h1>
+    {% endblock %}
+
+
+    {% block content %}
+    {% form_theme form 'UTASegProBundle:Form:fields.html.twig' %}
+    <form action="{{ path('admin_actividad_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Agregar</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_actividad') }}">
+                Volver a la lista
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
+    {% block extrajs %}
+    {% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+{% form_theme form 'UTASegProBundle:Form:fields.html.twig' %}
+{% block title %} Fuentes de Financiamiento {% endblock %}
+
+
+    {% block header %}
+        <h1>Creación de Fuentes de financiamiento</h1>
+    {% endblock %}
+
+{% block content %}
+    <form action="{{ path('admin_fuentedefinanciamiento_create') }}" method="post" {{ form_enctype(form) }} class="large-6">
+        <fieldset class="row">
+            <div class="row">
+                <div class="large-6 columns">
+                    {{ form_label(form.nombre) }}
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="large-6 columns">
+                    {{ form_label(form.descripcion) }}
+                    {{ form_widget(form.descripcion) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    {{ form_label(form.fechaapertura) }}
+                    {{ form_widget(form.fechaapertura.date) }}
+                </div>
+                <div class="large-6 columns">
+                    {{ form_label(form.fechacierre) }}
+                    {{ form_widget(form.fechacierre.date) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-3 columns">
+                    <button type="submit">Crear</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_fuentedefinanciamiento') }}">
+                Volver a la lista
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+{% block extrajs %}
+    <script type="text/javascript">
+    var $jq = jQuery.noConflict();
+    $jq(document).ready(function () {
+        // console.log("test-a");
+        //uta_segprobundle_fuentedefinanciamientotype_fechaapertura_date_datepicker
+        $jq("#uta_segprobundle_fuentedefinanciamientotype_fechaapertura_date_datepicker").datepicker();
+        $jq("#uta_segprobundle_fuentedefinanciamientotype_fechacierre_date_datepicker").datepicker();
+    });
+    </script>
+{% endblock %}

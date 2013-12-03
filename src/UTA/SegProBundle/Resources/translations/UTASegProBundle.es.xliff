@@ -1,0 +1,539 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="SonataAdminBundle.en.xliff" >
+        <body>
+            <trans-unit id="action_delete">
+                <source>action_delete</source>
+                <target>Borrar</target>
+            </trans-unit>
+            <trans-unit id="btn_batch">
+                <source>btn_batch</source>
+                <target>OK</target>
+            </trans-unit>
+            <trans-unit id="btn_create">
+                <source>btn_create</source>
+                <target>Crear</target>
+            </trans-unit>
+            <trans-unit id="btn_create_and_edit_again">
+                <source>btn_create_and_edit_again</source>
+                <target>Crear y editar</target>
+            </trans-unit>
+            <trans-unit id="btn_create_and_create_a_new_one">
+                <source>btn_create_and_create_a_new_one</source>
+                <target>Crear y agregar otro</target>
+            </trans-unit>
+            <trans-unit id="btn_create_and_return_to_list">
+                <source>btn_create_and_return_to_list</source>
+                <target>Crear y regresar al listado</target>
+            </trans-unit>
+            <trans-unit id="btn_filter">
+                <source>btn_filter</source>
+                <target>Filtrar</target>
+            </trans-unit>
+            <trans-unit id="btn_update">
+                <source>btn_update</source>
+                <target>Actualizar</target>
+            </trans-unit>
+            <trans-unit id="btn_update_and_edit_again">
+                <source>btn_update_and_edit_again</source>
+                <target>Actualizar</target>
+            </trans-unit>
+            <trans-unit id="btn_update_and_return_to_list">
+                <source>btn_update_and_return_to_list</source>
+                <target>Actualizar y cerrar</target>
+            </trans-unit>
+            <trans-unit id="link_delete">
+                <source>link_delete</source>
+                <target>Borrar</target>
+            </trans-unit>
+            <trans-unit id="link_action_create">
+                <source>link_action_create</source>
+                <target>Agregar nuevo</target>
+            </trans-unit>
+            <trans-unit id="link_action_list">
+                <source>link_action_list</source>
+                <target>Volver a la lista</target>
+            </trans-unit>
+            <trans-unit id="link_action_show">
+                <source>link_action_show</source>
+                <target>Mostrar</target>
+            </trans-unit>
+            <trans-unit id="link_action_edit">
+                <source>link_action_edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="link_add">
+                <source>link_add</source>
+                <target>Agregar nuevo</target>
+            </trans-unit>
+            <trans-unit id="link_list">
+                <source>link_list</source>
+                <target>Listar</target>
+            </trans-unit>
+            <trans-unit id="link_reset_filter">
+                <source>link_reset_filter</source>
+                <target>Resetear</target>
+            </trans-unit>
+            <trans-unit id="title_create">
+                <source>title_create</source>
+                <target>Crear</target>
+            </trans-unit>
+            <trans-unit id="title_dashboard">
+                <source>title_dashboard</source>
+                <target>Administrador</target>
+            </trans-unit>
+            <trans-unit id="title_edit">
+                <source>title_edit</source>
+                <target>Editar "%name%"</target>
+            </trans-unit>
+            <trans-unit id="title_list">
+                <source>title_list</source>
+                <target>Listar</target>
+            </trans-unit>
+            <trans-unit id="link_next_pager">
+                <source>link_next_pager</source>
+                <target>Siguiente</target>
+            </trans-unit>
+            <trans-unit id="link_previous_pager">
+                <source>link_previous_pager</source>
+                <target>Anterior</target>
+            </trans-unit>
+            <trans-unit id="link_first_pager">
+                <source>link_first_pager</source>
+                <target>Primero</target>
+            </trans-unit>
+            <trans-unit id="link_last_pager">
+                <source>link_last_pager</source>
+                <target>Último</target>
+            </trans-unit>
+            <trans-unit id="Admin">
+                <source>Admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="link_expand">
+                <source>link_expand</source>
+                <target>expandir/ocultar</target>
+            </trans-unit>
+            <trans-unit id="no_result">
+                <source>no_result</source>
+                <target>No hay resultados</target>
+            </trans-unit>
+            <trans-unit id="confirm_msg">
+                <source>confirm_msg</source>
+                <target>¿Estás seguro?</target>
+            </trans-unit>
+            <trans-unit id="action_edit">
+                <source>action_edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="action_show">
+                <source>action_show</source>
+                <target>Mostrar</target>
+            </trans-unit>
+            <trans-unit id="all_elements">
+                <source>all_elements</source>
+                <target>Todos los elementos</target>
+            </trans-unit>
+            <trans-unit id='flash_batch_empty'>
+                <source>flash_batch_empty</source>
+                <target>Acción cancelada. Ningún item seleccionado.</target>
+            </trans-unit>
+            <trans-unit id='flash_create_success'>
+                <source>flash_create_success</source>
+                <target>Elemento creado satisfactoriamente.</target>
+            </trans-unit>
+            <trans-unit id='flash_create_error'>
+                <source>flash_create_error</source>
+                <target>Se ha producido un error durante la creación del elemento.</target>
+            </trans-unit>
+            <trans-unit id='flash_edit_success'>
+                <source>flash_edit_success</source>
+                <target>Elemento actualizado satisfactoriamente.</target>
+            </trans-unit>
+            <trans-unit id='flash_edit_error'>
+                <source>flash_edit_error</source>
+                <target>Se ha producido un error durante la actualización del elemento.</target>
+            </trans-unit>
+            <trans-unit id='flash_batch_delete_success'>
+                <source>flash_batch_delete_success</source>
+                <target>Los elementos seleccionados fueron eliminados satisfactoriamente.</target>
+            </trans-unit>
+            <trans-unit id='flash_batch_delete_error'>
+                <source>flash_batch_delete_error</source>
+                <target>Se ha producido un error durante la eliminación de los elementos selecciondaos.</target>
+            </trans-unit>
+            <trans-unit id='flash_delete_error'>
+                <source>flash_delete_error</source>
+                <target>Se ha producido un error durante la eliminación del elemento.</target>
+            </trans-unit>
+            <trans-unit id='flash_delete_success'>
+                <source>flash_delete_success</source>
+                <target>Elemento eliminado satisfactoriamente.</target>
+            </trans-unit>
+            <trans-unit id="title_delete">
+                <source>title_delete</source>
+                <target>Confirmar borrado</target>
+            </trans-unit>
+            <trans-unit id="message_delete_confirmation">
+                <source>message_delete_confirmation</source>
+                <target>¿Está seguro que quiere borrar el elemento seleccionado?</target>
+            </trans-unit>
+            <trans-unit id="btn_delete">
+                <source>btn_delete</source>
+                <target>Sí, borrar</target>
+            </trans-unit>
+            <trans-unit id="title_batch_confirmation">
+                <source>title_batch_confirmation</source>
+                <target>Confirme la operación</target>
+            </trans-unit>
+            <trans-unit id="message_batch_confirmation">
+                <source>message_batch_confirmation</source>
+                <target>{0}¿Está seguro que quiere confirmar y ejecutar esta acción para todos los elementos seleccionados?|[1,+Inf[¿Está seguro que quiere confirmar y ejecutar esta acción para todos los %count% elementos seleccionados?</target>
+            </trans-unit>
+            <trans-unit id="message_batch_all_confirmation">
+                <source>message_batch_all_confirmation</source>
+                <target>¿Está seguro que quiere confirmar y ejecutar esta acción para todos los elementos?</target>
+            </trans-unit>
+            <trans-unit id="btn_execute_batch_action">
+                <source>btn_execute_batch_action</source>
+                <target>Sí, ejecutar</target>
+            </trans-unit>
+            <trans-unit id="label_type_yes">
+                <source>label_type_yes</source>
+                <target>sí</target>
+            </trans-unit>
+            <trans-unit id="label_type_no">
+                <source>label_type_no</source>
+                <target>no</target>
+            </trans-unit>
+            <trans-unit id="label_type_contains">
+                <source>label_type_contains</source>
+                <target>contiene</target>
+            </trans-unit>
+            <trans-unit id="label_type_not_contains">
+                <source>label_type_not_contains</source>
+                <target>no contiene</target>
+            </trans-unit>
+            <trans-unit id="label_type_equals">
+                <source>label_type_equals</source>
+                <target>es igual a</target>
+            </trans-unit>
+            <trans-unit id="label_type_not_equals">
+                <source>label_type_not_equals</source>
+                <target>no es igual a</target>
+            </trans-unit>
+            <trans-unit id="label_type_equal">
+                <source>label_type_equal</source>
+                <target>=</target>
+            </trans-unit>
+            <trans-unit id="label_type_greater_equal">
+                <source>label_type_greater_equal</source>
+                <target>&gt;=</target>
+            </trans-unit>
+            <trans-unit id="label_type_greater_than">
+                <source>label_type_greater_than</source>
+                <target>&gt;</target>
+            </trans-unit>
+            <trans-unit id="label_type_less_equal">
+                <source>label_type_less_equal</source>
+                <target>&lt;=</target>
+            </trans-unit>
+            <trans-unit id="label_type_less_than">
+                <source>label_type_less_than</source>
+                <target>&lt;</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_equal">
+                <source>label_date_type_equal</source>
+                <target>=</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_greater_equal">
+                <source>label_date_type_greater_equal</source>
+                <target>&gt;=</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_greater_than">
+                <source>label_date_type_greater_than</source>
+                <target>&gt;</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_less_equal">
+                <source>label_date_type_less_equal</source>
+                <target>&lt;=</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_less_than">
+                <source>label_date_type_less_than</source>
+                <target>&lt;</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_null">
+                <source>label_date_type_null</source>
+                <target>está vacío</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_not_null">
+                <source>label_date_type_not_null</source>
+                <target>no está vacío</target>
+            </trans-unit>
+            <trans-unit id="label_date_type_between">
+                <source>label_date_type_between</source>
+                <target>entre</target>
+            </trans-unit>
+            <trans-unit id="label_date_not_between">
+                <source>label_date_type_not_between</source>
+                <target>no entre</target>
+            </trans-unit>
+            <trans-unit id="label_filters">
+                <source>label_filters</source>
+                <target>Filtros</target>
+            </trans-unit>
+            <trans-unit id="delete_or">
+                <source>delete_or</source>
+                <target>o</target>
+            </trans-unit>
+            <trans-unit id="link_action_history">
+                <source>link_action_history</source>
+                <target>Revisiones</target>
+            </trans-unit>
+            <trans-unit id="td_action">
+                <source>td_action</source>
+                <target>Acción</target>
+            </trans-unit>
+            <trans-unit id="td_revision">
+                <source>td_revision</source>
+                <target>Revisiones</target>
+            </trans-unit>
+            <trans-unit id="td_timestamp">
+                <source>td_timestamp</source>
+                <target>Fecha</target>
+            </trans-unit>
+            <trans-unit id="td_username">
+                <source>td_username</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="label_view_revision">
+                <source>label_view_revision</source>
+                <target>Ver Revisión</target>
+            </trans-unit>
+            <trans-unit id="list_results_count">
+                <source>list_results_count</source>
+                <target>1 resultado|%count% resultados</target>
+            </trans-unit>
+            <trans-unit id="label_export_download">
+                <source>label_export_download</source>
+                <target>Exportar: </target>
+            </trans-unit>
+            <trans-unit id="loading_information">
+                <source>loading_information</source>
+                <target>Cargando información...</target>
+            </trans-unit>
+            <trans-unit id="btn_preview">
+                <source>btn_preview</source>
+                <target>Vista preliminar</target>
+            </trans-unit>
+            <trans-unit id="btn_preview_approve">
+                <source>btn_preview_approve</source>
+                <target>Aprobar</target>
+            </trans-unit>
+            <trans-unit id="btn_preview_decline">
+                <source>btn_preview_decline</source>
+                <target>Cancelar</target>
+            </trans-unit>
+            <trans-unit id="label_per_page">
+              <source>label_per_page</source>
+              <target>Por página</target>
+            </trans-unit>
+            <trans-unit id="list_select">
+              <source>list_select</source>
+              <target>list_select</target>
+            </trans-unit>
+            <trans-unit id="confirm_exit">
+                <source>confirm_exit</source>
+                <target>confirm_exit</target>
+            </trans-unit>
+            <trans-unit id="link_edit_acl">
+              <source>link_edit_acl</source>
+              <target>link_edit_acl</target>
+            </trans-unit>
+            <trans-unit id="btn_update_acl">
+              <source>btn_update_acl</source>
+              <target>btn_update_acl</target>
+            </trans-unit>
+            <trans-unit id="flash_acl_update_success">
+                <source>flash_acl_edit_success</source>
+                <target>flash_acl_update_success</target>
+            </trans-unit>
+            <trans-unit id="link_action_acl">
+                <source>link_action_acl</source>
+                <target>link_action_acl</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_cargo_list">
+                <source>breadcrumb.link_cargo_list</source>
+                <target>Lista de Cargos</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_estadoactividad_list">
+                <source>breadcrumb.link_estadoactividad_list</source>
+                <target>Lista Estado Actividad</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_fuentedefinanciamiento_list">
+                <source>breadcrumb.link_fuentedefinanciamiento_list</source>
+                <target>Lista de Fuentes de Financiamiento</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_usuario_list">
+                <source>breadcrumb.link_usuario_list</source>
+                <target>Lista Usuarios</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_actividad_list">
+                <source>breadcrumb.link_actividad_list</source>
+                <target>Lista Actividad</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_estadoproyecto_list">
+                <source>breadcrumb.link_estadoproyecto_list</source>
+                <target>Lista Estado de Proyecto</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_fichaproyecto_list">
+                <source>breadcrumb.link_fichaproyecto_list</source>
+                <target>Lista Ficha de Proyecto</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_objetivos_list">
+                <source>breadcrumb.link_objetivos_list</source>
+                <target>Lista Objetivos</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_segpro_list">
+                <source>breadcrumb.link_segpro_list</source>
+                <target>Lista Seguimiento</target>
+            </trans-unit>
+            <trans-unit id="list.label_cargo">
+                <source>list.label_cargo</source>
+                <target>Cargo</target>
+            </trans-unit>
+            <trans-unit id="list.label_descripcion">
+                <source>list.label_descripcion</source>
+                <target>Descripción</target>
+            </trans-unit>
+            <trans-unit id="list.label_estado">
+                <source>list.label_estado</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="list.label_nombre">
+                <source>list.label_nombre</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="list.label_fechaapertura">
+                <source>list.label_fechaapertura</source>
+                <target>Fecha de Apertura</target>
+            </trans-unit>
+            <trans-unit id="list.label_fechacierre">
+                <source>list.label_fechacierre</source>
+                <target>Fecha de Cierre</target>
+            </trans-unit>
+            <trans-unit id="list.label_user">
+                <source>list.label_user</source>
+                <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="list.label_apellido">
+                <source>list.label_apellido</source>
+                <target>Apellido</target>
+            </trans-unit>
+            <trans-unit id="list.label_segprouser">
+                <source>list.label_segprouser</source>
+                <target>Usuario asignado a proyecto</target>
+            </trans-unit>
+            <trans-unit id="list.label_fechainicio">
+                <source>list.label_fechainicio</source>
+                <target>Fecha de Inicio</target>
+            </trans-unit>
+            <trans-unit id="list.label_fechacomprometidatermino">
+                <source>list.label_fechacomprometidatermino</source>
+                <target>Fecha Comprometida de Término</target>
+            </trans-unit>
+            <trans-unit id="list.label_fechatermino">
+                <source>list.label_fechatermino</source>
+                <target>Fecha de Término</target>
+            </trans-unit>
+            <trans-unit id="list.label_monto">
+                <source>list.label_monto</source>
+                <target>Monto</target>
+            </trans-unit>
+            <trans-unit id="list.label_tipoobj">
+                <source>list.label_tipoobj</source>
+                <target>Tipo de Objetivo</target>
+            </trans-unit>
+            <trans-unit id="list.label_roles">
+                <source>list.label_roles</source>
+                <target>Cargo</target>
+            </trans-unit>
+            <trans-unit id="list.label_password">
+                <source>list.label_password</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="list.label_username">
+                <source>list.label_username</source>
+                <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="filter.label_username">
+                <source>filter.label_username</source>
+                <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="filter.label_password">
+                <source>filter.label_password</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="filter.label_roles">
+                <source>filter.label_roles</source>
+                <target>Cargo</target>
+            </trans-unit>
+            <trans-unit id="filter.label_tipoobj">
+                <source>filter.label_tipoobj</source>
+                <target>Tipo de Objetivo</target>
+            </trans-unit>
+            <trans-unit id="filter.label_monto">
+                <source>filter.label_monto</source>
+                <target>Monto</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fechatermino">
+                <source>filter.label_fechatermino</source>
+                <target>Fecha de Término</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fechacomprometidatermino">
+                <source>filter.label_fechacomprometidatermino</source>
+                <target>Fecha Comprometida de Término</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fechainicio">
+                <source>filter.label_fechainicio</source>
+                <target>Fecha de Inicio</target>
+            </trans-unit>
+            <trans-unit id="filter.label_segprouser">
+                <source>filter.label_segprouser</source>
+                <target>Usuario asignado a proyecto</target>
+            </trans-unit>
+            <trans-unit id="filter.label_apellido">
+                <source>filter.label_apellido</source>
+                <target>Apellido</target>
+            </trans-unit>
+            <trans-unit id="filter.label_user">
+                <source>filter.label_user</source>
+                <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fechacierre">
+                <source>filter.label_fechacierre</source>
+                <target>Fecha de Cierre</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fechaapertura">
+                <source>filter.label_fechaapertura</source>
+                <target>Fecha de Apertura</target>
+            </trans-unit>
+            <trans-unit id="filter.label_nombre">
+                <source>filter.label_nombre</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="filter.label_estado">
+                <source>filter.label_estado</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="filter.label_cargo">
+                <source>filter.label_cargo</source>
+                <target>Cargo</target>
+            </trans-unit>
+            <trans-unit id="filter.label_descripcion">
+                <source>filter.label_descripcion</source>
+                <target>Descripción</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

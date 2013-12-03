@@ -1,0 +1,92 @@
+services:
+    sonata.admin.estadoactividad:
+        class: UTA\SegProBundle\Admin\EstadoactividadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Estado Actividad", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Estadoactividad
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.cargo:
+        class: UTA\SegProBundle\Admin\CargoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Cargo", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Cargo
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.fuentedefinanciamiento:
+        class: UTA\SegProBundle\Admin\FuentedefinanciamientoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Fuente de Financiamiento", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Fuentedefinanciamiento
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.usuario:
+        class: UTA\SegProBundle\Admin\UsuarioAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Usuarios", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Usuario
+            - SonataAdminBundle:CRUD
+            - @service_container
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.actividad:
+        class: UTA\SegProBundle\Admin\ActividadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Actividad", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Actividad
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.estadoproyecto:
+        class: UTA\SegProBundle\Admin\EstadoproyectoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Estado de Proyecto", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Estadoproyecto
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.fichaproyecto:
+        class: UTA\SegProBundle\Admin\FichaproyectoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Ficha de Proyecto", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Fichaproyecto
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.objetivos:
+        class: UTA\SegProBundle\Admin\ObjetivosAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Objetivos", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Objetivos
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]
+    sonata.admin.segpro:
+        class: UTA\SegProBundle\Admin\SegproAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administración", label: "Seguimiento de Proyecto", label_translator_strategy: sonata.admin.label.strategy.underscore }
+        arguments:
+            - ~
+            - UTA\SegProBundle\Entity\Segpro
+            - ~
+        calls:
+            - [ setTranslationDomain, [UTASegProBundle]]

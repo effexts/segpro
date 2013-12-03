@@ -1,0 +1,30 @@
+admin_objetivos:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Objetivos:index" }
+
+admin_objetivos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Objetivos:show" }
+
+admin_objetivos_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Objetivos:new" }
+
+admin_objetivos_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Objetivos:create" }
+    requirements: { _method: post }
+
+admin_objetivos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Objetivos:edit" }
+
+admin_objetivos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Objetivos:update" }
+    requirements: { _method: post|put }
+
+admin_objetivos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Objetivos:delete" }
+    requirements: { _method: post|delete }

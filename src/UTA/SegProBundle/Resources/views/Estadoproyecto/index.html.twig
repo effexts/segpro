@@ -1,0 +1,48 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Estados de proyecto</h1>
+    {% endblock %}
+            
+{% block content %}
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_estadoproyecto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_estadoproyecto_show', { 'id': entity.id }) }}">mostrar</a>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_estadoproyecto_edit', { 'id': entity.id }) }}">Editar</a>
+                        </li>
+                    </ul>
+                </td>   
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_estadoproyecto_new') }}">
+                Agregar nuevo registro
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

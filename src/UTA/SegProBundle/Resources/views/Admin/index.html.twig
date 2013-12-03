@@ -1,0 +1,20 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Administrador</h1>
+    {% endblock %}
+            
+{% block content %}
+<ul>
+	<li><a href="{{ path('admin_actividad')}}">Actividad</a></li>
+	<li><a href="{{ path('admin_cargo')}}">Cargo</a></li>
+	<li><a href="{{ path('admin_estadoactividad') }}">Estado Actividad</a></li>
+	<li><a href="{{ path('admin_estadoproyecto') }}">Estado Proyecto</a></li>
+	<li><a href="{{ path('admin_fichaproyecto') }}">Ficha Proyecto</a></li>
+	<li><a href="{{ path('admin_fuentedefinanciamiento') }}">Fuentes de Financiamiento</a></li>
+	<li><a href="{{ path('admin_objetivos') }}">Objetivos</a></li>
+	<li><a href="{{ path('admin_segpro') }}">Seg Pro</a></li>
+	<li><a href="{{ path('admin_usuario') }}">Usuarios</a></li>
+</ul>
+{% endblock %}

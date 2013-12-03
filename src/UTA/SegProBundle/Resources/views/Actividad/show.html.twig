@@ -1,0 +1,48 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Actividad</h1>
+    {% endblock %}
+    {% block content %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{{ entity.fechainicio|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechacomprometidatermino</th>
+                <td>{{ entity.fechacomprometidatermino|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechatermino</th>
+                <td>{{ entity.fechatermino|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_actividad') }}">
+                Volver a la lista
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_actividad_edit', { 'id': entity.id }) }}">
+                Editar
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_actividad_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    </ul>
+    {% endblock %}

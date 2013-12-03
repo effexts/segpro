@@ -1,0 +1,53 @@
+# UTASegProBundle_admin_segpro:
+#     resource: "@UTASegProBundle/Resources/config/routing/segpro.yml"
+#     prefix: /admin/segpro
+# UTASegProBundle_admin_fuentedefinanciamiento:
+#     resource: "@UTASegProBundle/Resources/config/routing/fuentedefinanciamiento.yml"
+#     prefix: /admin/fuentedefinanciamiento
+# UTASegProBundle_admin_cargo:
+#     resource: "@UTASegProBundle/Resources/config/routing/cargo.yml"
+#     prefix: /admin/cargo
+# UTASegProBundle_admin_usuario:
+#     resource: "@UTASegProBundle/Resources/config/routing/usuario.yml"
+#     prefix: /admin/usuario
+# UTASegProBundle_admin_actividad:
+#     resource: "@UTASegProBundle/Resources/config/routing/actividad.yml"
+#     prefix: /admin/actividad
+# UTASegProBundle_admin_estadoactividad:
+#     resource: "@UTASegProBundle/Resources/config/routing/estadoactividad.yml"
+#     prefix: /admin/estadoactividad
+# UTASegProBundle_admin_fichaproyecto:
+#     resource: "@UTASegProBundle/Resources/config/routing/fichaproyecto.yml"
+#     prefix: /admin/fichaproyecto
+# UTASegProBundle_admin_objetivos:
+#     resource: "@UTASegProBundle/Resources/config/routing/objetivos.yml"
+#     prefix: /admin/objetivos
+# UTASegProBundle_admin_estadoproyecto:
+#     resource: "@UTASegProBundle/Resources/config/routing/estadoproyecto.yml"
+#     prefix: /admin/estadoproyecto
+# UTASegProBundle_admin:
+#     pattern: /admin
+#     defaults: { _controller: UTASegProBundle:Admin:index }
+
+uta_seg_pro_homepage:
+  pattern:  /
+  defaults: { _controller: "UTASegProBundle:Home:index" }
+uta_segpro_resumen_proyecto:
+  pattern: /resumen/{id}
+  defaults: { _controller: "UTASegProBundle:Proyecto:resumen"}
+# uta_segpro_resumen_proy_add_act:
+#   pattern: /resumen/addact/{id}/
+#   defaults: { _controller: "UTASegProBundle:Proyecto:resumen", method:'POST'}
+uta_segpro_statsporproyecto:
+  pattern: /estadistica-por-proyecto/{id}
+  defaults: { _controller: "UTASegProBundle:Proyecto:statsPorProyecto"}
+login:
+  path: /login
+  defaults: { _controller: "UTASegProBundle:Login:login" }
+login_check:
+  path:   /login_check
+uta_segpro_querybyyear:
+  pattern: /consulta/{year}
+  defaults: { _controller: "UTASegProBundle:Proyecto:queryByYear" }
+  requirements:
+    year: \d+

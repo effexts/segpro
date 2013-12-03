@@ -1,0 +1,30 @@
+admin_estadoactividad:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:index" }
+
+admin_estadoactividad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:show" }
+
+admin_estadoactividad_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:new" }
+
+admin_estadoactividad_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:create" }
+    requirements: { _method: post }
+
+admin_estadoactividad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:edit" }
+
+admin_estadoactividad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:update" }
+    requirements: { _method: post|put }
+
+admin_estadoactividad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Estadoactividad:delete" }
+    requirements: { _method: post|delete }

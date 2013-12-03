@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        {% block stylesheets %}
+        <link property="" rel="stylesheet" href="{{ asset('bundles/utasegpro/css/stylelogin.css') }}" type="text/css" media="all" />
+        {% endblock %}
+        {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/utasegpro/js/jquery-1.10.2.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/utasegpro/js/jquery.query-2.1.7.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/utasegpro/js/rainbows.js') }}"></script>
+        {% endblock %}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#submit1").hover(
+                        function() {
+                            $(this).animate({"opacity": "0"}, "slow");
+                        },
+                        function() {
+                            $(this).animate({"opacity": "1"}, "slow");
+                        }
+                );
+            });
+        </script>
+    </head>
+    <body>
+    {% if error %}
+        <div>{{ error.message }}</div>
+        <br>
+    {% endif %}
+{#    {% if passwordslist %}
+        <div>{{ passwordslist.nuevo }}</div>
+        <br>
+        <div>{{ passwordslist.db }} </div>
+        <br>
+    {% endif %}  #}  
+        <div id="wrapper">
+            <div id="wrappertop"></div>
+            <div id="wrappermiddle">
+                <h2>Ingreso Sistema de Seguimiento de Proyectos</h2>
+                <form action="{{ path('login_check') }}" method="POST">
+                    <div id="username_input">
+                        <div id="username_inputleft"></div>
+                        <div id="username_inputmiddle">
+
+                            <input type="text" class="url" name="_username" id="username" value="{{ last_username }}" onclick="this.value = '';">
+                            <img id="url_user" src="{{ asset('bundles/utasegpro/images/mailicon.png') }}" alt="">
+
+                        </div>
+                        <div id="username_inputright"></div>
+
+                    </div>
+                    <div id="password_input">
+                        <div id="password_inputleft"></div>
+                        <div id="password_inputmiddle">
+
+                            <input type="password" class="url" name="_password" id="password" value="Password" onclick="this.value = '';">
+                            <img id="url_password" src="{{ asset('bundles/utasegpro/images/passicon.png') }}" alt="">
+
+                        </div>
+                        <div id="password_inputright"></div>
+                    </div>
+
+                    <div id="submit">
+
+                        <input type="submit" id="submit1" value="Ingresar" name="login">
+                        <!--<input type="image" src="./images/submit.png" id="submit2" value="Sign In">-->
+                    </div>
+                </form>
+{#                <div id="links_left"><a href="#">Forgot your Password?</a></div>
+                <div id="links_right"><a href="#">Not a Member Yet?</a></div>#}
+            </div>
+            <div id="wrapperbottom"></div>
+        </div>
+    </body>
+</html>

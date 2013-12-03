@@ -1,0 +1,20 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+{% block content %}
+    <h1>Agregar Cargo</h1>
+
+    <form action="{{ path('admin_cargo_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Agregar</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_cargo') }}">
+                Volver a la lista
+            </a>
+        </li>
+    </ul>
+{% endblock %}

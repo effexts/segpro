@@ -1,0 +1,22 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Segpro creation</h1>
+    {% endblock %}
+    {% block  content %}
+    <form action="{{ path('admin_segpro_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Agregar</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_segpro') }}">
+                Volver a la lista
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

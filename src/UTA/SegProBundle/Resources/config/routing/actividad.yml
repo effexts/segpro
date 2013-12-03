@@ -1,0 +1,30 @@
+admin_actividad:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Actividad:index" }
+
+admin_actividad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Actividad:show" }
+
+admin_actividad_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Actividad:new" }
+
+admin_actividad_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Actividad:create" }
+    requirements: { _method: post }
+
+admin_actividad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Actividad:edit" }
+
+admin_actividad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Actividad:update" }
+    requirements: { _method: post|put }
+
+admin_actividad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Actividad:delete" }
+    requirements: { _method: post|delete }

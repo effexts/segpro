@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<orm-designer version="2.2.1.736" name="SegPro" mvc="Symfony2" orm="Doctrine2" uuid="a4d50848-4d90-4964-b24b-40d2c7b3c448">
+  <external-module storage-path="src/UTA/SegProBundle/Resources/config/doctrine/Entity.module.xml"/>
+  <visual-data>
+    <entity uuid="1fbd6c06-63eb-4fdd-9591-c8ee57711093" position-x="-120" position-y="241" size-x="0" size-x2="125" size-y="0" size-y2="45"/>
+    <entity uuid="45960e30-5798-424e-9e0d-258ec8c6b50e" position-x="246" position-y="27" size-x="0" size-x2="166" size-y="0" size-y2="101"/>
+    <entity uuid="4d3ab521-0763-447e-be3d-02fcc00aee1e" position-x="286" position-y="220" size-x="0" size-x2="129" size-y="0" size-y2="87"/>
+    <entity uuid="5b629f23-c68f-4c83-8df0-707e4a5361c5" position-x="312" position-y="374" size-x="0" size-x2="125" size-y="0" size-y2="59"/>
+    <many-to-many-association-entity uuid="68a65d76-25ff-42b5-985d-b2d31e422061" center-position-x="0" center-position-y="0"/>
+    <association uuid="722a786d-fdc3-4346-9dfa-5e0d381f0109" center-position-x="0" center-position-y="14"/>
+    <entity uuid="765d1fa1-ecad-44b0-996b-fcb41d3fa3ba" position-x="50" position-y="185" size-x="0" size-x2="160" size-y="0" size-y2="157"/>
+    <entity uuid="7be1c107-08f6-4827-bb8c-738c4943ef16" position-x="479" position-y="121" size-x="0" size-x2="125" size-y="0" size-y2="87"/>
+    <entity uuid="7f8086e2-29c0-4c55-b55b-d41227825a87" position-x="481" position-y="367" size-x="0" size-x2="109" size-y="0" size-y2="73"/>
+    <association uuid="85219e68-276d-41da-8b43-39090fc2c319" center-position-x="0" center-position-y="0"/>
+    <entity uuid="8560f891-5f84-40e5-adcd-102939201236" position-x="481" position-y="226" size-x="0" size-x2="108" size-y="0" size-y2="74"/>
+    <entity uuid="92f0b385-ab79-4384-813c-14e53ba7ebb2" position-x="13" position-y="55" size-x="0" size-x2="125" size-y="0" size-y2="59"/>
+    <project uuid="a4d50848-4d90-4964-b24b-40d2c7b3c448" size-x="132" size-x2="804" size-y="0" size-y2="908"/>
+    <entity uuid="d375969a-47f3-4932-bc33-fc6d5afd7bbd" position-x="82" position-y="395" size-x="0" size-x2="97" size-y="0" size-y2="59"/>
+    <module uuid="f6b45721-85c9-4f0a-90a4-024511064a1f" bk-color="4294375930" position-x="50" position-y="50" size-x="132" size-x2="704" size-y="0" size-y2="470"/>
+  </visual-data>
+</orm-designer>

@@ -1,0 +1,30 @@
+admin_cargo:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Cargo:index" }
+
+admin_cargo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Cargo:show" }
+
+admin_cargo_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Cargo:new" }
+
+admin_cargo_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Cargo:create" }
+    requirements: { _method: post }
+
+admin_cargo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Cargo:edit" }
+
+admin_cargo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Cargo:update" }
+    requirements: { _method: post|put }
+
+admin_cargo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Cargo:delete" }
+    requirements: { _method: post|delete }

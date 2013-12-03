@@ -1,0 +1,2 @@
+Generating entities for bundle "UTASegProBundle"
+Generating entities for bundle "UTASegProBundle"

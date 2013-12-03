@@ -1,0 +1,44 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Segpro</h1>
+    {% endblock %}
+    {% block content %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Identificador</th>
+                <td>{{ entity.identificador }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_segpro') }}">
+                Volver a la lista
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_segpro_edit', { 'id': entity.id }) }}">
+                Editar
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_segpro_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    </ul>
+    {% endblock %}

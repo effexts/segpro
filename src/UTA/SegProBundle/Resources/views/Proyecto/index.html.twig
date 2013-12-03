@@ -1,0 +1,25 @@
+{% extends 'UTASegProBundle::base.html.twig' %}
+
+{% block content %}
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Nombre</th>
+        <th>Monto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for segpro in segpros %}
+      <tr>
+        <td>{{ segpro.identificador }}</td>
+        <td>{{ segpro.nombre }}</td>
+        <td>{{ segpro.ficha.montoadjudicado }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

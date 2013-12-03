@@ -1,0 +1,69 @@
+{% extends 'UTASegProBundle::admin.html.twig' %}
+
+
+    {% block header %}
+        <h1>Fichaproyecto</h1>
+    {% endblock %}
+            
+{% block content %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigoidentificacion</th>
+                <td>{{ entity.codigoidentificacion }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecorto</th>
+                <td>{{ entity.nombrecorto }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{{ entity.fechainicio|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechatermino</th>
+                <td>{{ entity.fechatermino|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechapostulacion</th>
+                <td>{{ entity.fechapostulacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechaadjudicacion</th>
+                <td>{{ entity.fechaadjudicacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Montoadjudicado</th>
+                <td>{{ entity.montoadjudicado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_fichaproyecto') }}">
+                Volver a la lista
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_fichaproyecto_edit', { 'id': entity.id }) }}">
+                Editar
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_fichaproyecto_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}

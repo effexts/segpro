@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<orm-designer version="2.2.1.736" mvc="Symfony2" orm="Doctrine2">
+  <module name="Entity" import-format="Doctrine2Yml" import-path="." uuid="f6b45721-85c9-4f0a-90a4-024511064a1f">
+    <entity name="Actividad" uuid="45960e30-5798-424e-9e0d-258ec8c6b50e">
+      <field name="fechainicio" type="date" required="true" uuid="31848e37-c9ea-4975-a9c6-dcc36862b0bf">
+        <orm-attributes>
+          <attribute name="column">fechaInicio</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechacomprometidatermino" type="date" required="true" uuid="bab9cd73-b99c-4fae-924e-c653ec6e516e">
+        <orm-attributes>
+          <attribute name="column">fechaComprometidaTermino</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechatermino" type="date" uuid="ac0e67e8-a201-4493-a95f-c30d098d30b4">
+        <orm-attributes>
+          <attribute name="column">fechaTermino</attribute>
+        </orm-attributes>
+      </field>
+      <field name="monto" type="integer" uuid="48d92c73-1d8f-40f5-bc7b-b04814be4325"/>
+      <field name="estado_id" unique="true" uuid="743bbf90-8459-49bd-b3b2-2e1a4f4476c2"/>
+      <field name="segpros_id" uuid="d6d76667-3342-4137-ba9f-ebcf2a826022"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="83994cba-14fc-428b-a04c-ffd445d0c12b"/>
+      <orm-attributes>
+        <attribute name="table">actividad</attribute>
+        <attribute name="export-file-name">Actividad.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <association from="Actividad" to="Estadoactividad" inverse-alias="estado" uuid="fc1c5657-71d1-44c7-874d-d5cfd82388cd">
+      <association-field from="estado_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <association from="Actividad" to="Segpro" owner-alias="actividades" inverse-alias="segpros" uuid="722a786d-fdc3-4346-9dfa-5e0d381f0109">
+      <association-field from="segpros_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="Cargo" uuid="5b629f23-c68f-4c83-8df0-707e4a5361c5">
+      <field name="cargo" type="string" size="255" required="true" uuid="8417d7a5-8d14-4139-a6d4-fea1a295da8f">
+        <orm-attributes>
+          <attribute name="column">Cargo</attribute>
+        </orm-attributes>
+      </field>
+      <field name="descripcion" type="string" size="255" required="true" uuid="4a118865-5ac2-4cdf-b8e4-12ca6275ef16">
+        <orm-attributes>
+          <attribute name="column">Descripcion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="77e3b2cd-92d1-4567-854e-ebca3a7c8392"/>
+      <orm-attributes>
+        <attribute name="table">cargo</attribute>
+        <attribute name="export-file-name">Cargo.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <entity name="Estadoactividad" uuid="92f0b385-ab79-4384-813c-14e53ba7ebb2">
+      <field name="estado" type="string" size="255" required="true" uuid="6604afa6-280b-4ce5-9112-fd802f9d3800"/>
+      <field name="descripcion" type="string" size="255" uuid="50499c7f-ff6a-4fef-aad8-0d15578ed42d"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="43414cf6-c81a-44d8-aec2-9b9b47c267fb"/>
+      <orm-attributes>
+        <attribute name="table">estadoactividad</attribute>
+        <attribute name="export-file-name">Estadoactividad.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <entity name="Estadoproyecto" uuid="1fbd6c06-63eb-4fdd-9591-c8ee57711093">
+      <field name="estado" type="string" size="255" required="true" uuid="5a2e70ac-a10b-4e1d-afa8-dd5ba394c064"/>
+      <field name="descripcion" type="string" size="255" required="true" uuid="ab73968c-a650-44ac-836a-487688f0339c">
+        <orm-attributes>
+          <attribute name="column">Descripcion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="9af4ad69-5800-461d-8ac2-8c79bcc46177"/>
+      <orm-attributes>
+        <attribute name="table">estadoproyecto</attribute>
+        <attribute name="export-file-name">Estadoproyecto.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <entity name="Fichaproyecto" uuid="765d1fa1-ecad-44b0-996b-fcb41d3fa3ba">
+      <field name="codigoidentificacion" type="string" size="255" required="true" uuid="8f35e706-cc14-4958-9b88-dcf4b0187a4e">
+        <orm-attributes>
+          <attribute name="column">CodigoIdentificacion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="nombrecorto" type="string" size="255" required="true" uuid="fa6b31d9-8840-4c45-b52b-045b9069ca28">
+        <orm-attributes>
+          <attribute name="column">NombreCorto</attribute>
+        </orm-attributes>
+      </field>
+      <field name="nombre" type="string" size="255" required="true" uuid="7bcb369d-4530-46e1-9431-75a06d490f87">
+        <orm-attributes>
+          <attribute name="column">Nombre</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechainicio" type="date" required="true" uuid="3e4912ca-93d8-4648-8bd1-998651a90f02">
+        <orm-attributes>
+          <attribute name="column">FechaInicio</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechatermino" type="date" required="true" uuid="c5de4c31-b345-4781-b16b-d382f7840715">
+        <orm-attributes>
+          <attribute name="column">FechaTermino</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechapostulacion" type="date" uuid="9fe30819-ef63-4b15-b7de-844f73aa0ee1">
+        <orm-attributes>
+          <attribute name="column">FechaPostulacion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechaadjudicacion" type="date" uuid="efdb8ddd-216f-4e4d-9a7a-e4c6ee56fc9f">
+        <orm-attributes>
+          <attribute name="column">FechaAdjudicacion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="montoadjudicado" type="bigint" required="true" uuid="abdbd5db-617c-4184-a55f-a2c26f7d06fb">
+        <orm-attributes>
+          <attribute name="column">montoAdjudicado</attribute>
+        </orm-attributes>
+      </field>
+      <field name="estadoproyecto_id" unique="true" uuid="1ba37abf-61d0-4886-95a8-978c5da773f0"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="6970cf10-4fc7-4d55-b065-fd3e0fd508e6"/>
+      <orm-attributes>
+        <attribute name="table">fichaproyecto</attribute>
+        <attribute name="export-file-name">Fichaproyecto.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <association from="Fichaproyecto" to="Estadoproyecto" owner-alias="" inverse-alias="estadoproyect" uuid="f43aa21f-f159-4dc0-a4b1-ba8d723fed9e">
+      <association-field from="estadoproyecto_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="Fuentedefinanciamiento" uuid="7be1c107-08f6-4827-bb8c-738c4943ef16">
+      <field name="nombre" type="string" size="255" required="true" uuid="94d4a556-edb9-4f1e-9828-d4e47ce1a07d">
+        <orm-attributes>
+          <attribute name="column">Nombre</attribute>
+        </orm-attributes>
+      </field>
+      <field name="descripcion" type="string" size="255" required="true" uuid="f9184b11-3ac1-4976-8b68-c700e6718e4c">
+        <orm-attributes>
+          <attribute name="column">Descripcion</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechaapertura" type="date" uuid="1a5cd307-b747-4251-834b-fed343b923b5">
+        <orm-attributes>
+          <attribute name="column">FechaApertura</attribute>
+        </orm-attributes>
+      </field>
+      <field name="fechacierre" type="date" uuid="1cbc0544-a07e-444f-9efa-bfddbe37d57f">
+        <orm-attributes>
+          <attribute name="column">FechaCierre</attribute>
+        </orm-attributes>
+      </field>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="1211e851-7000-4520-a6b9-e2f7f1374436"/>
+      <orm-attributes>
+        <attribute name="table">fuentedefinanciamiento</attribute>
+        <attribute name="export-file-name">Fuentedefinanciamiento.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <entity name="Objetivos" uuid="d375969a-47f3-4932-bc33-fc6d5afd7bbd">
+      <field name="tipoobj" type="string" size="1" required="true" uuid="4e3425bf-15f0-4238-8dc0-d85683dd5530">
+        <orm-attributes>
+          <attribute name="column">tipoObj</attribute>
+        </orm-attributes>
+      </field>
+      <field name="descripcion" type="text" required="true" uuid="b1cd120a-8764-47c0-895f-38879a6f4545"/>
+      <field name="idFicha_id" uuid="d88f056d-1bdd-41df-8db3-549f76a38378"/>
+      <orm-attributes>
+        <attribute name="table">objetivos</attribute>
+        <attribute name="export-file-name">Objetivos.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <association from="Objetivos" to="Fichaproyecto" owner-alias="objetivos" inverse-alias="idFicha" uuid="aa783aa7-0367-4abe-8cf3-e4de0f417814">
+      <association-field from="idFicha_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="Segpro" uuid="4d3ab521-0763-447e-be3d-02fcc00aee1e">
+      <field name="identificador" type="string" size="255" required="true" uuid="b09cdf2b-0efd-4398-b33c-65f6b2c5d426"/>
+      <field name="nombre" type="string" size="255" uuid="535d8fc5-81f7-43fa-8a61-028ec965ec06"/>
+      <field name="fuente_id" unique="true" uuid="58fbee7d-9ab8-49a8-82ab-a1797f1c4f93"/>
+      <field name="ficha_id" unique="true" uuid="110ef067-b167-4bea-a921-fb5671bbe465"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="56533143-343c-4fde-8670-f1bd37bf93de"/>
+      <orm-attributes>
+        <attribute name="table">segpro</attribute>
+        <attribute name="export-file-name">Segpro.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <association from="Segpro" to="Fuentedefinanciamiento" owner-alias="" inverse-alias="fuente" uuid="8a772e07-9707-42e6-96da-9398203a99af">
+      <association-field from="fuente_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <association from="Segpro" to="Fichaproyecto" owner-alias="" inverse-alias="ficha" uuid="85219e68-276d-41da-8b43-39090fc2c319">
+      <association-field from="ficha_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="Usuario" uuid="7f8086e2-29c0-4c55-b55b-d41227825a87">
+      <field name="user" type="string" size="255" required="true" uuid="483c8e09-e856-4478-a285-4dc9f63494ec">
+        <orm-attributes>
+          <attribute name="column">Usuario</attribute>
+        </orm-attributes>
+      </field>
+      <field name="nombre" type="string" size="255" required="true" uuid="d27aec57-d1c2-4c93-903f-a61d1768e52e">
+        <orm-attributes>
+          <attribute name="column">Nombre</attribute>
+        </orm-attributes>
+      </field>
+      <field name="apellido" type="string" size="255" required="true" uuid="fa5caeab-879a-4396-9392-fe1146fd48bf">
+        <orm-attributes>
+          <attribute name="column">Apellido</attribute>
+        </orm-attributes>
+      </field>
+      <field name="cargo_id" unique="true" uuid="04011f46-192e-45ba-b867-f604a1f3d617"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="9136577f-8b61-44bb-9319-7d69cb664498"/>
+      <orm-attributes>
+        <attribute name="table">usuario</attribute>
+        <attribute name="export-file-name">Usuario.orm.yml</attribute>
+        <attribute name="lifecycle-callbacks"/>
+      </orm-attributes>
+    </entity>
+    <association from="Usuario" to="Cargo" owner-alias="" inverse-alias="cargo" uuid="55b30d9d-1bac-4e34-98af-10bc55c4a6e7">
+      <association-field from="cargo_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="segpro_usuarios" uuid="8560f891-5f84-40e5-adcd-102939201236">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="19652431-3585-476b-bc85-f1cfc5178b6f"/>
+      <field name="usuario_id" uuid="0592f82a-f3d1-4b08-967b-106b39508e10"/>
+      <field name="segpro_id" type="integer" uuid="a14ba587-7015-40f5-abb6-508044318621"/>
+    </entity>
+    <many-to-many mn-entity="segpro_usuarios" uuid="f688b535-7eb9-4915-a290-a2c8f4feee22">
+      <many-to-many-entity name="Usuario" owning-side="true" alias="users" uuid="1ee41a45-797d-44d0-a0c2-5f7056720727"/>
+      <many-to-many-entity name="Segpro" owning-side="false" alias="segprouser" uuid="68a65d76-25ff-42b5-985d-b2d31e422061">
+        <many-to-many-field from="segpro_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <orm-attributes>
+      <attribute name="namespace">UTA\SegProBundle\Entity</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <entity uuid="1fbd6c06-63eb-4fdd-9591-c8ee57711093" position-x="-120" position-y="241" size-x="0" size-x2="125" size-y="0" size-y2="45"/>
+    <entity uuid="45960e30-5798-424e-9e0d-258ec8c6b50e" position-x="246" position-y="27" size-x="0" size-x2="166" size-y="0" size-y2="101"/>
+    <entity uuid="4d3ab521-0763-447e-be3d-02fcc00aee1e" position-x="286" position-y="220" size-x="0" size-x2="129" size-y="0" size-y2="87"/>
+    <entity uuid="5b629f23-c68f-4c83-8df0-707e4a5361c5" position-x="295" position-y="381" size-x="0" size-x2="125" size-y="0" size-y2="59"/>
+    <many-to-many-association-entity uuid="68a65d76-25ff-42b5-985d-b2d31e422061" center-position-x="0" center-position-y="0"/>
+    <entity uuid="765d1fa1-ecad-44b0-996b-fcb41d3fa3ba" position-x="55" position-y="185" size-x="0" size-x2="160" size-y="0" size-y2="157"/>
+    <entity uuid="7be1c107-08f6-4827-bb8c-738c4943ef16" position-x="479" position-y="121" size-x="0" size-x2="125" size-y="0" size-y2="87"/>
+    <entity uuid="7f8086e2-29c0-4c55-b55b-d41227825a87" position-x="481" position-y="367" size-x="0" size-x2="109" size-y="0" size-y2="73"/>
+    <entity uuid="8560f891-5f84-40e5-adcd-102939201236" position-x="481" position-y="226" size-x="0" size-x2="108" size-y="0" size-y2="74"/>
+    <entity uuid="92f0b385-ab79-4384-813c-14e53ba7ebb2" position-x="13" position-y="55" size-x="0" size-x2="125" size-y="0" size-y2="59"/>
+    <entity uuid="d375969a-47f3-4932-bc33-fc6d5afd7bbd" position-x="87" position-y="394" size-x="0" size-x2="97" size-y="0" size-y2="59"/>
+    <module uuid="f6b45721-85c9-4f0a-90a4-024511064a1f" bk-color="4294375930" position-x="50" position-y="50" size-x="132" size-x2="704" size-y="0" size-y2="470"/>
+  </visual-data>
+</orm-designer>

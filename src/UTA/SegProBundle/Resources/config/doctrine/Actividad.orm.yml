@@ -1,0 +1,44 @@
+UTA\SegProBundle\Entity\Actividad:
+  type: entity
+  table: actividad
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    identificador:
+      type: string
+      lenght: 255
+      nullable: false
+      column: identificador
+    fechainicio:
+      type: date
+      nullable: false
+      column: fechaInicio
+    fechacomprometidatermino:
+      type: date
+      nullable: false
+      column: fechaComprometidaTermino
+    fechatermino:
+      type: date
+      nullable: true
+      column: fechaTermino
+    monto:
+      type: integer
+      nullable: true
+  lifecycleCallbacks: 
+  oneToOne:
+    estado:
+      targetEntity: UTA\SegProBundle\Entity\Estadoactividad
+      joinColumns:
+        estado_id:
+          referencedColumnName: id
+          unique: false
+  manyToOne:
+    segpros:
+      targetEntity: UTA\SegProBundle\Entity\Segpro
+      inversedBy: actividades
+      joinColumns:
+        segpros_id:
+          referencedColumnName: id

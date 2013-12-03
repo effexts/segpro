@@ -1,0 +1,56 @@
+UTA\SegProBundle\Entity\Fichaproyecto:
+  type: entity
+  table: fichaproyecto
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    codigoidentificacion:
+      type: string
+      length: 255
+      nullable: false
+      column: CodigoIdentificacion
+    nombrecorto:
+      type: string
+      length: 255
+      nullable: false
+      column: NombreCorto
+    nombre:
+      type: string
+      length: 255
+      nullable: false
+      column: Nombre
+    fechainicio:
+      type: date
+      nullable: true
+      column: FechaInicio
+    fechatermino:
+      type: date
+      nullable: true
+      column: FechaTermino
+    fechapostulacion:
+      type: date
+      nullable: false
+      column: FechaPostulacion
+    fechaadjudicacion:
+      type: date
+      nullable: true
+      column: FechaAdjudicacion
+    montoadjudicado:
+      type: bigint
+      nullable: false
+      column: montoAdjudicado
+  lifecycleCallbacks: 
+  oneToOne:
+    estadoproyect:
+      targetEntity: UTA\SegProBundle\Entity\Estadoproyecto
+      joinColumns:
+        estadoproyect_id:
+          referencedColumnName: id
+          unique: true
+  oneToMany:
+    objetivos:
+      targetEntity: UTA\SegProBundle\Entity\Objetivos
+      mappedBy: idFicha

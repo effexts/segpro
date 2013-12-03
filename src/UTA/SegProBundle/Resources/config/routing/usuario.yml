@@ -1,0 +1,30 @@
+admin_usuario:
+    pattern:  /
+    defaults: { _controller: "UTASegProBundle:Usuario:index" }
+
+admin_usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "UTASegProBundle:Usuario:show" }
+
+admin_usuario_new:
+    pattern:  /new
+    defaults: { _controller: "UTASegProBundle:Usuario:new" }
+
+admin_usuario_create:
+    pattern:  /create
+    defaults: { _controller: "UTASegProBundle:Usuario:create" }
+    requirements: { _method: post }
+
+admin_usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "UTASegProBundle:Usuario:edit" }
+
+admin_usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "UTASegProBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+admin_usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "UTASegProBundle:Usuario:delete" }
+    requirements: { _method: post|delete }
