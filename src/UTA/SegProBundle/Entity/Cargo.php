@@ -1,31 +1,47 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping AS ORM;
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
-/**
- * Cargo
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="cargo")
  */
 class Cargo implements RoleInterface
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Cargo")
      */
     private $cargo;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Descripcion")
      */
     private $descripcion;
 
+    /** 
+     * @ORM\Column(type="string", unique=true, nullable=true)
+     */
+    private $role;
 
+    /** 
+     * @ORM\ManyToMany(targetEntity="UTA\SegProBundle\Entity\Usuario", mappedBy="roles")
+     */
+    private $users;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -82,29 +98,6 @@ class Cargo implements RoleInterface
         return $this->descripcion;
     }
 
-
-    public function __toString()
-    {
-        return $this->getCargo();
-    }
-    /**
-     * @var string
-     */
-    private $role;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $users;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
     /**
      * Set role
      *
@@ -159,5 +152,9 @@ class Cargo implements RoleInterface
     public function getUsers()
     {
         return $this->users;
+    }
+    
+    public function __toString() {
+        return $this->getCargo();
     }
 }

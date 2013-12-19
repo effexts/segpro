@@ -1,26 +1,27 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Estadoactividad
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="estadoactividad")
  */
 class Estadoactividad
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $estado;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $descripcion;
 
@@ -81,8 +82,7 @@ class Estadoactividad
         return $this->descripcion;
     }
 
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getEstado();
     }
 }

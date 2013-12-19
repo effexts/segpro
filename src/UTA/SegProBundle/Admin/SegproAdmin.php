@@ -13,9 +13,9 @@ class SegproAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('identificador', 'text', array('label' => 'Identificador'))
-            ->add('nombre', 'text', array('label' => 'Nombre'))
-            ->add('fuente', 'sonata_type_model', array(
+//            ->add('identificador', 'text', array('label' => 'Identificador'))
+//            ->add('nombre', 'text', array('label' => 'Nombre'))
+            ->add('fuentes', 'sonata_type_model', array(
                                         'label'     =>  'Fuente de Financiamiento',
                                         'class'     =>  'UTA\SegProBundle\Entity\Fuentedefinanciamiento',
                                         'required'  =>  false
@@ -53,12 +53,12 @@ class SegproAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('identificador')
-            ->add('nombre')
-            ->add('fuente')
-            ->add('ficha')
-            ->add('actividades')
-            ->add('users')
+//            ->add('identificador')
+//            ->add('nombre')
+//            ->add('fuentes')
+//            ->add('ficha')
+//            ->add('actividades')
+//            ->add('users')
         ;
     }
 
@@ -66,12 +66,16 @@ class SegproAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('identificador')
+            ->addIdentifier('id')
             // ->add('slug')
-            ->add('nombre')
-            ->add('fuente')
+//            ->add('nombre')
+            ->add('fuentes')
             ->add('ficha')
-            ->add('actividades')
+            ->add('actividades','sonata_type_model', array(
+                                        'class'     =>  'UTA\SegProBundle\Entity\Actividades',
+                                        'label'     =>  'Actividades',
+                                        'required'  =>  false
+                                    ))
             ->add('users')
         ;
     }

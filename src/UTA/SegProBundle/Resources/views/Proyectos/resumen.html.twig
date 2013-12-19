@@ -15,12 +15,12 @@
                         <a href="{{ path('uta_segpro_statsporproyecto', {'id':proyecto.id}) }}">Estad&iacute;sticas</a>
                     </li>
                     <li class="divider"></li>
-                    <li>
+{#                    <li>
                         <a href="#">An&aacute;lisis Financiero</a>
                     </li>
                     <li>
                         <a href="#">An&aacute;lisis de Actividades</a>
-                    </li>
+                    </li>#}
                 </ul>
                         
             </div>
@@ -32,7 +32,7 @@
   <table>
       <tr>
         <th colspan="2">Identificador</th>
-        <td colspan="2">{{ proyecto.identificador }}</td>
+        <td colspan="2">{{ proyecto.ficha.codigoidentificacion }}</td>
       </tr>
       <tr>
         <th>Monto</th>
@@ -42,13 +42,13 @@
       </tr>
       <tr>
         <th>Fecha de Inicio</th>
-        <td>{{ proyecto.ficha.fechainicio|date("d-m-Y", "America/Santiago") }}</td>
+        <td>{{ proyecto.ficha.fechainicio is empty ? "Sin fecha" : proyecto.ficha.fechainicio|date("d-m-Y", "America/Santiago") }}</td>
         <th>Fecha de Término</th>
-        <td>{{ proyecto.ficha.fechatermino|date("d-m-Y", "America/Santiago") }}</td>          
+        <td>{{ proyecto.ficha.fechatermino is empty ? "Sin fecha" : proyecto.ficha.fechatermino|date("d-m-Y", "America/Santiago") }}</td>          
       </tr>
 
   </table>
-
+<br class="divider"/>
 <h5>Actividades</h5>
   <table id="agregar-actividades">
   {% if proyecto.actividades is empty %}
@@ -122,6 +122,8 @@
                      }
                 });
             $('#dialog').dialog('close');
+            $('#dialog').init();
+            
     });
       </script>
 

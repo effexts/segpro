@@ -6,3 +6,16 @@
     border-style: solid;
     border-width: 1px 1px 0;
 }
+button, .button {
+    margin: 0;
+}
+.graficos {
+    min-height: 402px;
+    /*min-width: 320px;*/
+}
+#volver {
+  float: right;
+  left: -21px;
+  position: relative;
+  top: -53px;
+}

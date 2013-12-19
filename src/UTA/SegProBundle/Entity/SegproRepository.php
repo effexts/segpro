@@ -3,6 +3,7 @@
 namespace UTA\SegProBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use UTA\SegProBundle\Entity\SegproFuente;
 
 /**
  * SegproRepository
@@ -12,67 +13,112 @@ use Doctrine\ORM\EntityRepository;
  */
 class SegproRepository extends EntityRepository
 {
-        public function buscarTodosOrdPorIdentificador()
-        {
-            return $this->getEntityManager()
-                ->createQuery('SELECT p FROM UTASegProBundle:Segpro p ORDER BY p.identificador ASC')
-                ->getResult();
-        }
-    public function buscarAsociadosaUsuario($idUsuario)
-    {
-        $repository = $this->getEntityManager()->getRepository('UTASegProBundle:Segpro');
-        $qb = $repository->createQueryBuilder('p')
+    public function buscarTodosOrdPorIdentificador() {
+        return $this->getEntityManager()
+                        ->createQuery('SELECT p FROM UTASegProBundle:Segpro p ORDER BY p.identificador ASC')
+                        ->getResult();
+    }
+
+    public function buscarAsociadosaUsuario($idUsuario) {
+//        $repository = $this->getEntityManager()->getRepository('UTASegProBundle:Segpro');
+        
+        $qb = $this->createQueryBuilder('p')
 //        $qb->select('p')
 //           ->from('Segpro','p')
-           ->leftJoin('p.users', 'u')
-           ->where('u.id = :idUsuario')
-           ->setParameter('idUsuario', $idUsuario);
-       $proyectos = $qb->getQuery()->execute();
+                ->leftJoin('p.users', 'u')
+                ->where('u.id = :idUsuario')
+                ->setParameter('idUsuario', $idUsuario);
+        $proyectos = $qb->getQuery()->execute();
 //       \Doctrine\Common\Util\Debug::dump($proyectos);
-       return $proyectos;
-                
-                
-                
+        return $proyectos;
+
+
+
 //        return $this->getEntityManager()
 //                ->createQuery('SELECT p FROM UTASegProBundle:Segpro p, UTASegProBundle:Usuario u where u.segprouser = p.id and u.id = :idUsuario ORDER BY p.id ASC')
 //                ->setParameter('idUsuario', $idUsuario)
 //                    ->getResult();
     }
-    
-    public function buscarProyectosByYear($year)
-    {
-        $repository = $this->getEntityManager()->getRepository('UTASegProBundle:Segpro');
-        $qb = $repository->createQueryBuilder('p')
+
+    public function buscarProyectosByYear($year) {
+        $qb = $this->createQueryBuilder('p')
 //        $qb->select('p')
 //           ->from('Segpro','p')
-           ->leftJoin('p.ficha', 'f')
-           ->andWhere('f.fechainicio >= :year')
-           ->setParameter('year', $year);
-        
+                ->leftJoin('p.ficha', 'f')
+                ->andWhere('f.fechapostulacion >= :year')
+                ->setParameter('year', $year);
+
 //        $em = $this->getEntityManager();
 //        $query = $em->createQuery('SELECT DISTINCT YEAR(FechaInicio) FROM UTASegProBundle:Fichaproyecto');
 //        $proyectos = $query->getResult();
-       $proyectos = $qb->getQuery()->execute();
+        $proyectos = $qb->getQuery()->execute();
 //       \Doctrine\Common\Util\Debug::dump($proyectos);
-       return $proyectos;
+        return $proyectos;
     }
 
-    public function buscarAsociadosaUsuarioByYear($idUsuario, $year)
-    {
-        $repository = $this->getEntityManager()->getRepository('UTASegProBundle:Segpro');
-        $qb = $repository->createQueryBuilder('p')
+    public function buscarAsociadosaUsuarioByYear($idUsuario, $year) {
+        $qb = $this->createQueryBuilder('p')
 //        $qb->select('p')
 //           ->from('Segpro','p')
-           ->leftJoin('p.users', 'u')
-           ->leftJoin('p.ficha', 'f')
-           ->where('u.id = :idUsuario')
-           ->setParameter('idUsuario', $idUsuario)
-           ->andWhere('f.fechainicio >= :year')
-           ->setParameter('year', $year)
-           ->addGroupBy('f.fechainicio')
-           ->addOrderBy('f.fechainicio', 'ASC');
-       $proyectos = $qb->getQuery()->execute();
+                ->leftJoin('p.users', 'u')
+                ->leftJoin('p.ficha', 'f')
+                ->where('u.id = :idUsuario')
+                ->setParameter('idUsuario', $idUsuario)
+                ->andWhere('f.fechainicio >= :year')
+                ->setParameter('year', $year)
+                ->addGroupBy('f.fechapostulacion')
+                ->addOrderBy('f.fechapostulacion', 'ASC');
+        $proyectos = $qb->getQuery()->execute();
 //       \Doctrine\Common\Util\Debug::dump($proyectos);
-       return $proyectos;
+        return $proyectos;
     }
+
+    public function buscarProyectosbyFuente($fuente) {
+//        $repository = $this->getEntityManager()->getRepository('UTASegProBundle:Segpro');
+        return $this->getEntityManager()
+                ->createQuery('SELECT p, sp FROM UTASegProBundle:Segpro p '
+                        . 'JOIN p.asocSegproFuente sp '
+                        . 'WHERE sp.fuentes = :idFuente')
+                ->setParameter('idFuente', $fuente)
+                ->getResult();
+//        $qb = $this->createQueryBuilder('p');
+//        $qb->leftJoin('p.fuente', 'f')
+//                ->where($qb->expr()->like('f.id', ':fuentes'))
+//                ->setParameter('fuentes', $fuente);
+//        $fuentes = $qb->getQuery()->execute();
+//        return $fuentes;
+    }
+    
+    public function buscarProyectosFuenteYear($year, $fuente) {
+        return $this->getEntityManager()->createQuery('SELECT p '
+                . 'FROM UTASegProBundle:Segpro p '
+                . 'LEFT JOIN p.asocSegproFuente f LEFT JOIN p.ficha fi '
+                . 'WHERE f.fuentes = :idFuente '
+                . 'AND fi.fechapostulacion >= :year')
+                ->setParameter('idFuente', $fuente)
+                ->setParameter('year', $year)
+                ->getResult();
+        
+
+//                ->where('u.id = :idUsuario')
+//                ->setParameter('idUsuario', $idUsuario)
+    }
+    
+    public function buscarAsociadosaUsuarioFuenteYear($idUsuario, $year, $fuente) {
+        return $this->getEntityManager()->createQuery('SELECT p '
+                . 'FROM UTASegProBundle:Segpro p '
+                . 'LEFT JOIN p.asocSegproFuente f '
+                . 'LEFT JOIN p.ficha fi '
+                . 'LEFT JOIN p.users u '
+                . 'WHERE f.fuentes = :idFuente '
+                . 'AND fi.fechapostulacion = :year '
+                . 'AND u.id = :idUsuario')    
+                ->setParameter('idFuente', $fuente)
+                ->setParameter('year', $year)
+                ->setParameter('idUsuario', $idUsuario)
+                ->getResult();
+        
+    }
+
+
 }

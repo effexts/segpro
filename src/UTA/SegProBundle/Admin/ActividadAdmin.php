@@ -25,7 +25,8 @@ class ActividadAdmin extends Admin
                                         'label'=>'Estado de Actividad'
                                         // 'required' => false
                                     ))
-            ->add('segpros','entity', array('class'=> 'UTA\SegProBundle\Entity\Segpro', 'label'=>'Proyecto Asignados'))
+            ->add('segpros','sonata_type_model', array('class'=> 'UTA\SegProBundle\Entity\Segpro', 'label'=>'Proyectos Asignados'))//, 'required'=>true, 'expanded'=>false, 'by_reference'=>false,'multiple'=>false,'compound'=>true))
+//            ->add('segpros','entity', array('class'=> 'UTA\SegProBundle\Entity\Segpro', 'label'=>'Proyecto Asignados'))
             // ->add('author', 'entity', array('class' => 'Acme\DemoBundle\Entity\User'))
             // ->add('body') //if no type is specified, SonataAdminBundle tries to guess it
         ;

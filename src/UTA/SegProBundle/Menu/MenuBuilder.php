@@ -52,6 +52,18 @@ class MenuBuilder {
 //                    ->setLabel($request->get('label'))
                 ;
             break;
+            case 'uta_segpro_consulta':
+                $menu->addChild('Consultas')
+                    ->setCurrent(true);
+            break;
+            case 'uta_segpro_ver_todos':
+                $menu->addChild('Ver todos')
+                    ->setCurrent(true);
+            break;
+            case 'uta_segpro_admproyectos':
+                $menu->addChild('Agregar Proyectos')
+                    ->setCurrent(true);
+            break;
 //            case 'Acme_view_post':
 //                $menu->addChild('label.list.post', array(
 //                    'route' => 'Acme_list_post'

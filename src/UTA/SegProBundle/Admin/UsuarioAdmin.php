@@ -25,7 +25,9 @@ class UsuarioAdmin extends Admin
             ->add('apellido', 'text', array('label'=>'Apellido'))
             ->add('roles', 'sonata_type_model', array('expanded' => true, 'by_reference' => false, 'multiple' => true, 'class' => 'UTA\SegProBundle\Entity\Cargo', 'label'=>'Cargo', 'compound'=>true ))
             ->add('username', 'text', array('label' => 'Nombre de Usuario'))
+//        if ($this->getSubject()->getId()<=0) {               
             ->add('password', 'password', array('label' => 'Contraseña'))
+//        }
 //            ->add('salt', 'text', array('label' => 'Salt', 'required'=>false))
 //            ->add('isActive', 'text', array('label' => '¿Está Activo?', 'attr'=>array('widget'=>'choice')))
             ->add('segprouser','sonata_type_model', array('class'=> 'UTA\SegProBundle\Entity\Segpro', 'label'=>'Proyectos Asignados', 'required'=>false, 'expanded'=>true, 'by_reference'=>false,'multiple'=>true,'compound'=>true))
@@ -54,7 +56,7 @@ class UsuarioAdmin extends Admin
             ->add('apellido')
             ->add('roles')
             ->add('segprouser')
-            ->add('password')
+//            ->add('password')
         ;
     }
     

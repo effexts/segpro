@@ -17,7 +17,7 @@ class ActividadType extends AbstractType
             ->add('fechacomprometidatermino', 'date', array('label' => 'Fecha Comprometida de Término', 'widget'=>'single_text','format'=>'dd/MM/yyyy', 'attr'=>array('class'=>'datepickers')))
             ->add('fechatermino', 'date', array('label' => 'Fecha de Término', 'widget'=>'single_text','format'=>'dd/MM/yyyy', 'attr'=>array('class'=>'datepickers')))
             ->add('monto', 'integer', array('label'=>'Monto'))
-            ->add('estado', null, array('label' => 'Estado de Actividad'))
+            ->add('estadoActividad', null, array('label' => 'Estado de Actividad'))
             // ->add('segpros')
         ;
     }

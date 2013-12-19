@@ -30,24 +30,38 @@
 #     defaults: { _controller: UTASegProBundle:Admin:index }
 
 uta_seg_pro_homepage:
-  pattern:  /
+  path:  /
   defaults: { _controller: "UTASegProBundle:Home:index" }
 uta_segpro_resumen_proyecto:
-  pattern: /resumen/{id}
-  defaults: { _controller: "UTASegProBundle:Proyecto:resumen"}
+  path: /resumen/{id}
+  defaults: { _controller: "UTASegProBundle:Proyectos:resumen"}
 # uta_segpro_resumen_proy_add_act:
 #   pattern: /resumen/addact/{id}/
-#   defaults: { _controller: "UTASegProBundle:Proyecto:resumen", method:'POST'}
+#   defaults: { _controller: "UTASegProBundle:Proyectos:resumen", method:'POST'}
 uta_segpro_statsporproyecto:
-  pattern: /estadistica-por-proyecto/{id}
-  defaults: { _controller: "UTASegProBundle:Proyecto:statsPorProyecto"}
+  path: /estadistica-por-proyecto/{id}
+  defaults: { _controller: "UTASegProBundle:Proyectos:statsPorProyecto"}
 login:
   path: /login
   defaults: { _controller: "UTASegProBundle:Login:login" }
 login_check:
   path:   /login_check
+uta_segpro_consulta:
+  path: /consulta/
+  defaults: { _controller: "UTASegProBundle:Consultas:index" }
+  methods: [GET|POST]
 uta_segpro_querybyyear:
-  pattern: /consulta/{year}
-  defaults: { _controller: "UTASegProBundle:Proyecto:queryByYear" }
+  path: /consulta/{year}
+  defaults: { _controller: "UTASegProBundle:Consultas:queryByYear", year:2013 }
+  methods: [POST]
   requirements:
     year: \d+
+uta_segpro_admproyectos:
+    path: /proyectos/
+    defaults: { _controller: "UTASegProBundle:Proyectos:administrar" }
+uta_segpro_agregarproj:
+    path: /proyectos/agregar/{idProyecto}
+    defaults: { _controller: "UTASegProBundle:Proyectos:agregarProyectos" }
+uta_segpro_ver_todos:
+    path: /proyectos/ver-todos
+    defaults: { _controller: "UTASegProBundle:Proyectos:verTodos" }

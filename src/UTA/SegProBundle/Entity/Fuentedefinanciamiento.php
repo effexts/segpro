@@ -1,40 +1,52 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Fuentedefinanciamiento
+/** 
+ * @ORM\Entity(repositoryClass="UTA\SegProBundle\Entity\FuentedefinanciamientoRepository")
+ * @ORM\Table(name="fuentedefinanciamiento")
  */
 class Fuentedefinanciamiento
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Nombre")
      */
     private $nombre;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Descripcion")
      */
     private $descripcion;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="FechaApertura")
      */
     private $fechaapertura;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="FechaCierre")
      */
     private $fechacierre;
-
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="UTA\SegProBundle\Entity\SegproFuente", mappedBy="fuentes")
+     */
+    private $asocSegproFuente;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asocSegproFuente = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -137,8 +149,40 @@ class Fuentedefinanciamiento
         return $this->fechacierre;
     }
 
-    public function __toString()
+    /**
+     * Add asocSegproFuente
+     *
+     * @param \UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente
+     * @return Fuentedefinanciamiento
+     */
+    public function addAsocSegproFuente(\UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente)
     {
+        $this->asocSegproFuente[] = $asocSegproFuente;
+    
+        return $this;
+    }
+
+    /**
+     * Remove asocSegproFuente
+     *
+     * @param \UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente
+     */
+    public function removeAsocSegproFuente(\UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente)
+    {
+        $this->asocSegproFuente->removeElement($asocSegproFuente);
+    }
+
+    /**
+     * Get asocSegproFuente
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsocSegproFuente()
+    {
+        return $this->asocSegproFuente;
+    }
+    
+    public function __toString() {
         return $this->getNombre();
     }
 }

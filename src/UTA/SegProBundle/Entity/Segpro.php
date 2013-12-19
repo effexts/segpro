@@ -1,55 +1,56 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Segpro
+/** 
+ * @ORM\Entity(repositoryClass="UTA\SegProBundle\Entity\SegproRepository")
+ * @ORM\Table(name="segpro")
  */
 class Segpro
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $identificador;
+    private $codigouta;
 
-    /**
-     * @var string
-     */
-    private $nombre;
-
-    /**
-     * @var \UTA\SegProBundle\Entity\Fuentedefinanciamiento
-     */
-    private $fuente;
-
-    /**
-     * @var \UTA\SegProBundle\Entity\Fichaproyecto
+    /** 
+     * @ORM\OneToOne(targetEntity="UTA\SegProBundle\Entity\Fichaproyecto")
+     * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id", unique=true)
      */
     private $ficha;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
+    /** 
+     * @ORM\OneToMany(targetEntity="UTA\SegProBundle\Entity\Actividad", mappedBy="segpros", cascade={"persist","remove"})
      */
     private $actividades;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
+    /** 
+     * @ORM\OneToMany(targetEntity="UTA\SegProBundle\Entity\SegproFuente", mappedBy="segpro")
+     */
+    private $asocSegproFuente;
+
+    /** 
+     * @ORM\ManyToMany(
+     *     targetEntity="UTA\SegProBundle\Entity\Usuario", 
+     *     mappedBy="segprouser", 
+     *     cascade={"persist","remove"}
+     * )
      */
     private $users;
-
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->asocSegproFuente = new \Doctrine\Common\Collections\ArrayCollection();
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -64,72 +65,26 @@ class Segpro
     }
 
     /**
-     * Set identificador
+     * Set codigouta
      *
-     * @param string $identificador
+     * @param integer $codigouta
      * @return Segpro
      */
-    public function setIdentificador($identificador)
+    public function setCodigouta($codigouta)
     {
-        $this->identificador = $identificador;
+        $this->codigouta = $codigouta;
     
         return $this;
     }
 
     /**
-     * Get identificador
+     * Get codigouta
      *
-     * @return string 
+     * @return integer 
      */
-    public function getIdentificador()
+    public function getCodigouta()
     {
-        return $this->identificador;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     * @return Segpro
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string 
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * Set fuente
-     *
-     * @param \UTA\SegProBundle\Entity\Fuentedefinanciamiento $fuente
-     * @return Segpro
-     */
-    public function setFuente(\UTA\SegProBundle\Entity\Fuentedefinanciamiento $fuente = null)
-    {
-        $this->fuente = $fuente;
-    
-        return $this;
-    }
-
-    /**
-     * Get fuente
-     *
-     * @return \UTA\SegProBundle\Entity\Fuentedefinanciamiento 
-     */
-    public function getFuente()
-    {
-        return $this->fuente;
+        return $this->codigouta;
     }
 
     /**
@@ -153,18 +108,6 @@ class Segpro
     public function getFicha()
     {
         return $this->ficha;
-    }
-
-
-
-
-/*  setActividades, ver si es verdad el problema de los errores   */
-    public function setActividades(\Doctrine\Common\Collections\Collection $actividads)
-    {
-        $this->actividades = $actividads;
-        foreach ($actividads as $acts) {
-            $acts->setSegpros($this);
-        }
     }
 
     /**
@@ -201,6 +144,39 @@ class Segpro
     }
 
     /**
+     * Add asocSegproFuente
+     *
+     * @param \UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente
+     * @return Segpro
+     */
+    public function addAsocSegproFuente(\UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente)
+    {
+        $this->asocSegproFuente[] = $asocSegproFuente;
+    
+        return $this;
+    }
+
+    /**
+     * Remove asocSegproFuente
+     *
+     * @param \UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente
+     */
+    public function removeAsocSegproFuente(\UTA\SegProBundle\Entity\SegproFuente $asocSegproFuente)
+    {
+        $this->asocSegproFuente->removeElement($asocSegproFuente);
+    }
+
+    /**
+     * Get asocSegproFuente
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAsocSegproFuente()
+    {
+        return $this->asocSegproFuente;
+    }
+
+    /**
      * Add users
      *
      * @param \UTA\SegProBundle\Entity\Usuario $users
@@ -232,11 +208,10 @@ class Segpro
     {
         return $this->users;
     }
-
-
-
-    public function __toString()
-    {
-        return $this->getNombre();
+    
+    public function __toString() {
+//        \Doctrine\Common\Util\Debug::dump($this->getFicha());
+        
+        return is_null($this->getFicha())? $this->getCodigouta() : $this->getFicha()->getNombrecorto();
     }
 }

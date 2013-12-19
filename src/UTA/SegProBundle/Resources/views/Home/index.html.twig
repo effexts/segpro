@@ -1,29 +1,54 @@
 {% extends 'UTASegProBundle::layout.html.twig' %}
 {% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
-  <script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
 
 {% endblock %}
 {% block sidebar %}
   {% endblock %}
 {% block proy %}
+        {% if vista is defined %}
+            {% if vista == 'consulta' %}
+                <span id="volver" class="button secondary tiny clear-fix"><a href="{{path('uta_segpro_consulta')}}">Volver</a></span>
+            {% endif %}
+        {% endif %}
 <div class="large-12 columns">
     {% block proyectos %}
-        <div class="row">
-        {% for segpro in segpros %}
-            <div class="large-4 small-6 left columns">
-                {#<img src="http://placehold.it/1000x1000&text=Thumbnail">#}
-                <div id="grafico{{ loop.index0 }}" class="border"></div>
-                <div class="panel">
-                    <h5><a href="{{ path('uta_segpro_resumen_proyecto', {'id':segpro.id}) }}">{{ segpro.nombre }}</a></h5>
-                    <h6 class="subheader">${{ segpro.ficha.montoadjudicado | number_format(0,',','.') }}</h6>
-                    <h7 class="subheader">Año de Postulación: {{ segpro.ficha.fechapostulacion | date('Y')}}</h7>
+        {% if segpros is defined %}
+    <div class="row">
+            {% for segpro in segpros %}
+  {#              {% if loop.index0 is divisibleby(3) %}
+                    {% if not loop.first %}
+                        </div><div class="row">
+                    {% endif %}
+                {% endif %}#}
+                <div class="large-4 small-6 left columns graficos">
+                                {#<img src="http://placehold.it/1000x1000&text=Thumbnail">#}
+                    <div id="grafico{{ loop.index0 }}" class="border"></div>
+                    <div class="panel">
+                        <h5><a href="{{ path('uta_segpro_resumen_proyecto', {'id':segpro.id}) }}">{{ segpro.ficha.nombrecorto }}</a></h5>
+                        <h6 class="subheader">${{ segpro.ficha.montoadjudicado | number_format(0,',','.') }}</h6>
+                        <h7 class="subheader">Año de Postulación: {{ segpro.ficha.fechapostulacion | date('Y')}}</h7>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-        </div>
-        <!-- End Thumbnails -->
+            {% endfor %}
+    </div>
+
+            {% else %}
+    <div class="panel large-12 columns">
+        <h1>¡Lo sentimos!</h1>
+        <h3>No tienes ningún proyecto asignado.</h3>
+                    {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_DIPLAN') or is_granted('ROLE_DDP') %}
+        <p>    
+        <div>Sin embargo, puedes consultar <a href="{{ path('uta_segpro_ver_todos') }}"><span>aquí</span></a> todos los proyectos.</div>
+        <div>Además puedes <a href="{{ path('uta_segpro_admproyectos') }}"><span>agregar</span></a> proyectos.</div>
+        </p>
+                    {% endif %}
+    </div>
+            {% endif %}
+
+    <!-- End Thumbnails -->
     {% endblock %}
 </div>
 {% endblock %}
@@ -53,29 +78,29 @@
   </table>
 
 {% endblock %}#}
-    
+
 {% block extrajs %}
-    <script type="text/javascript">
-	$(function(){
-		Highcharts.setOptions({
-		    lang: {
-		        decimalPoint: ',',
-		        thousandsSep: '.',
-		        downloadJPEG: 'Descargar como JPEG',
-		        downloadPDF: 'Descargar como PDF',
-		        downloadPNG: 'Descargar como PNG',
-		        downloadSVG: 'Descargar como SVG',
-		        printChart: 'Imprimir gráfico'
-		    }
-		});
-                
+<script type="text/javascript">
+    $(function() {
+        Highcharts.setOptions({
+            lang: {
+                decimalPoint: ',',
+                thousandsSep: '.',
+                downloadJPEG: 'Descargar como JPEG',
+                downloadPDF: 'Descargar como PDF',
+                downloadPNG: 'Descargar como PNG',
+                downloadSVG: 'Descargar como SVG',
+                printChart: 'Imprimir gráfico'
+            }
+        });
 
-        {% for key, chart in charts %}
+{% if charts is defined %}
+    {% for key, chart in charts %}
 
-	    {{ chart(chart, false) }}
-        {% endfor %}
-	
-	});
+        {{ chart(chart, false) }}
+    {% endfor %}
+{% endif %}
+    });
 
 </script>
 {% endblock %}

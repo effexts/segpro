@@ -466,6 +466,54 @@
                 <source>list.label_username</source>
                 <target>Usuario</target>
             </trans-unit>
+            <trans-unit id="list.label_id">
+                <source>list.label_id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="list.label_fuente">
+                <source>list.label_fuente</source>
+                <target>Fuente</target>
+            </trans-unit>
+            <trans-unit id="list.label_ficha">
+                <source>list.label_ficha</source>
+                <target>Ficha</target>
+            </trans-unit>
+            <trans-unit id="list.label_actividades">
+                <source>list.label_actividades</source>
+                <target>Actividades</target>
+            </trans-unit>
+            <trans-unit id="list.label_users">
+                <source>list.label_users</source>
+                <target>Usuarios</target>
+            </trans-unit>
+            <trans-unit id="list.label_role">
+                <source>list.label_role</source>
+                <target>Rol</target>
+            </trans-unit>
+            <trans-unit id="filter.label_role">
+                <source>filter.label_role</source>
+                <target>Rol</target>
+            </trans-unit>
+            <trans-unit id="filter.label_users">
+                <source>filter.label_users</source>
+                <target>Usuarios</target>
+            </trans-unit>
+            <trans-unit id="filter.label_actividades">
+                <source>filter.label_actividades</source>
+                <target>Actividades</target>
+            </trans-unit>
+            <trans-unit id="filter.label_ficha">
+                <source>filter.label_ficha</source>
+                <target>Ficha</target>
+            </trans-unit>
+            <trans-unit id="filter.label_fuente">
+                <source>filter.label_fuente</source>
+                <target>Fuente</target>
+            </trans-unit>
+            <trans-unit id="filter.label_id">
+                <source>filter.label_id</source>
+                <target>ID</target>
+            </trans-unit>
             <trans-unit id="filter.label_username">
                 <source>filter.label_username</source>
                 <target>Usuario</target>
@@ -533,6 +581,10 @@
             <trans-unit id="filter.label_descripcion">
                 <source>filter.label_descripcion</source>
                 <target>Descripción</target>
+            </trans-unit>
+            <trans-unit id="Not Found">
+                <source>Not Found</source>
+                <target>No encontrado</target>
             </trans-unit>
         </body>
     </file>

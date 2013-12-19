@@ -30,7 +30,7 @@
         <div class="panel">
             <h3>Nombre:</h3>
             <h5 class="subheader">{{ proyecto.ficha.nombre }}</h5>
-            <h5 class="subheader">{{ proyecto.fuente.nombre }}</h5>
+            <h5 class="subheader">{{ proyecto.ficha.codigoidentificacion }}</h5>
         </div>
         <ul class="side-nav">
             <li>
@@ -40,12 +40,12 @@
                 <a href="{{ path('uta_segpro_statsporproyecto', {'id':proyecto.id}) }}">Estad&iacute;sticas</a>
             </li>
             <li class="divider"></li>
-            <li>
+{#            <li>
                 <a href="#">An&aacute;lisis Financiero</a>
             </li>
             <li>
                 <a href="#">An&aacute;lisis de Actividades</a>
-            </li>
+            </li>#}
         </ul>
 
     </div>

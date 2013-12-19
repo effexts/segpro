@@ -1,0 +1,93 @@
+{% extends 'UTASegProBundle::layout.html.twig' %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block proy %}
+
+<div class="large-12 columns">
+{% if form is defined %}
+    <div class="panel clear-fix">
+            {{ form_start(form) }}
+            {{ form_label(form.year,'', {'label_attr': {'class': 'secondary round label'}}) }}
+            {{ form_widget(form.year) }}
+            {{ form_errors(form.year) }}
+            {{ form_label(form.Buscar) }}
+            {{ form_widget(form.Buscar) }}
+            {{ form_rest(form) }}
+    </div>
+{% endif %}
+    {% if listado is defined %}
+        <fieldset>
+            <legend>Proyectos {{ agno }}</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan='4'>Nombre Proyecto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for project in listado %}
+                    <tr>
+                        <td>{{ project.NOMBRECORTO }}</td>
+                        <td>{{ project.APR_INTERNO }}</td>
+                        <td>{{ project.FECHAPOSTULACION|date('d-m-Y') }}</td>
+                        <td>
+                        {% if project.EXISTE %}
+                            <span class="tiny success button disabled">Proyecto Agregado</span>
+                        {% else %}
+                            <a id="cod{{ project.CODIGOUTA }}" href="{{ path('uta_segpro_agregarproj', {'idProyecto':project.CODIGOUTA})}}" class="tiny secondary button">Agregar Proyecto</a>
+                        {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+                
+        </fieldset>
+    {% endif %}
+</div>
+<img id="loader" src="{{ asset('bundles/utasegpro/images/ajax-loader.gif') }}" style="vertical-align: middle; display: none" />
+<script>
+    $('td > a').click(function(event){
+        event.preventDefault();
+        var $id = $(this).attr('id');
+        var $url = $(this).attr('href');
+        var $imgsrc = $('#loader').prop('src');
+        $('#'+$id).replaceWith('<span id="'+$id+'" class="tiny secondary button disabled" style ="width: 99px;"><img src="'+$imgsrc+'" alt="" /></span>');
+        $.ajax({
+            type: "GET",
+            url: $url
+            //data: $data
+        }).done(function(result){
+                if(result.success) {
+                    $('#'+$id).replaceWith('<span href="#" class="tiny success button disabled">Proyecto Agregado</span>');
+                }
+                if(result.error){
+                    alert(result.error);
+                }
+        })
+});
+{#      $('.enviarform').click(function(event) {
+          
+            $('form').unbind('submit');
+            var $url = $('form').attr('action');
+            var $data = $('form').serialize();
+
+            $.ajax({
+                type: "POST",
+                url: $url,
+                data: $data
+            }).done(function( result ) {
+                    if(result.success) {
+                      if($('#acts_empty').length)
+                          $('#acts_empty').replaceWith('<thead><th>N° Actividad</th><th>Identificador</th><th>Monto</th><th>Fecha Comprometida</th><th>Fecha Término</th><th>Estado</th></thead>');
+                      $('#agregar-actividades').append('<tr><td>'+ result.id +'</td><td>'+ result.identificador +'</td><td>'+ format1(result.monto, "$")+'</td><td>'+ result.fechacomprometidatermino +'</td><td>'+ result.fechatermino +'</td><td>'+ result.estado +'</td></tr>');
+                     }
+                });
+            $('#dialog').dialog('close');
+            $('#dialog').init();
+            
+    });#}
+</script>
+{% endblock %}

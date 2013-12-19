@@ -1,34 +1,35 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Objetivos
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="objetivos")
  */
 class Objetivos
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
+    
+    /** 
+     * @ORM\Column(type="string", length=1, nullable=false, name="tipoObj")
      */
     private $tipoobj;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="text", nullable=false)
      */
     private $descripcion;
 
-    /**
-     * @var \UTA\SegProBundle\Entity\Fichaproyecto
+    /** 
+     * @ORM\ManyToOne(targetEntity="UTA\SegProBundle\Entity\Fichaproyecto", inversedBy="objetivos")
+     * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id")
      */
-    private $idFicha;
-
+    private $ficha;
 
     /**
      * Get id
@@ -87,25 +88,29 @@ class Objetivos
     }
 
     /**
-     * Set idFicha
+     * Set ficha
      *
-     * @param \UTA\SegProBundle\Entity\Fichaproyecto $idFicha
+     * @param \UTA\SegProBundle\Entity\Fichaproyecto $ficha
      * @return Objetivos
      */
-    public function setIdFicha(\UTA\SegProBundle\Entity\Fichaproyecto $idFicha = null)
+    public function setFicha(\UTA\SegProBundle\Entity\Fichaproyecto $ficha = null)
     {
-        $this->idFicha = $idFicha;
+        $this->ficha = $ficha;
     
         return $this;
     }
 
     /**
-     * Get idFicha
+     * Get ficha
      *
      * @return \UTA\SegProBundle\Entity\Fichaproyecto 
      */
-    public function getIdFicha()
+    public function getFicha()
     {
-        return $this->idFicha;
+        return $this->ficha;
+    }
+    
+    public function __toString() {
+        return $this->getDescripcion();
     }
 }

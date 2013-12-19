@@ -1,54 +1,57 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Actividad
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="actividad")
  */
 class Actividad
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
+    
+    /** 
+     * @ORM\Column(type="string", nullable=false, name="identificador")
      */
     private $identificador;
-    
-    /**
-     * @var \DateTime
+
+    /** 
+     * @ORM\Column(type="date", nullable=false, name="fechaInicio")
      */
     private $fechainicio;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=false, name="fechaComprometidaTermino")
      */
     private $fechacomprometidatermino;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="fechaTermino")
      */
     private $fechatermino;
 
-    /**
-     * @var integer
+    /** 
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $monto;
 
-    /**
-     * @var \UTA\SegProBundle\Entity\Estadoactividad
-     */
-    private $estado;
-
-    /**
-     * @var \UTA\SegProBundle\Entity\Segpro
+    /** 
+     * @ORM\ManyToOne(targetEntity="UTA\SegProBundle\Entity\Segpro", inversedBy="actividades")
+     * @ORM\JoinColumn(name="segpros_id", referencedColumnName="id")
      */
     private $segpros;
 
+    /** 
+     * @ORM\ManyToOne(targetEntity="UTA\SegProBundle\Entity\Estadoactividad")
+     * @ORM\JoinColumn(name="estadoAct_id", referencedColumnName="id")
+     */
+    private $estadoActividad;
+    
 
     /**
      * Get id
@@ -58,6 +61,29 @@ class Actividad
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set identificador
+     *
+     * @param string $identificador
+     * @return Actividad
+     */
+    public function setIdentificador($identificador)
+    {
+        $this->identificador = $identificador;
+    
+        return $this;
+    }
+
+    /**
+     * Get identificador
+     *
+     * @return string 
+     */
+    public function getIdentificador()
+    {
+        return $this->identificador;
     }
 
     /**
@@ -153,29 +179,6 @@ class Actividad
     }
 
     /**
-     * Set estado
-     *
-     * @param \UTA\SegProBundle\Entity\Estadoactividad $estado
-     * @return Actividad
-     */
-    public function setEstado(\UTA\SegProBundle\Entity\Estadoactividad $estado = null)
-    {
-        $this->estado = $estado;
-    
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return \UTA\SegProBundle\Entity\Estadoactividad 
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
      * Set segpros
      *
      * @param \UTA\SegProBundle\Entity\Segpro $segpros
@@ -198,33 +201,29 @@ class Actividad
         return $this->segpros;
     }
 
-    public function __toString()
-    {
-        return (string) $this->getIdentificador();
-    }
-
-
-
     /**
-     * Set identificador
+     * Set estadoActividad
      *
-     * @param string $identificador
+     * @param \UTA\SegProBundle\Entity\Estadoactividad $estadoActividad
      * @return Actividad
      */
-    public function setIdentificador($identificador)
+    public function setEstadoActividad(\UTA\SegProBundle\Entity\Estadoactividad $estadoActividad = null)
     {
-        $this->identificador = $identificador;
+        $this->estadoActividad = $estadoActividad;
     
         return $this;
     }
 
     /**
-     * Get identificador
+     * Get estadoActividad
      *
-     * @return string 
+     * @return \UTA\SegProBundle\Entity\Estadoactividad 
      */
-    public function getIdentificador()
+    public function getEstadoActividad()
     {
-        return $this->identificador;
+        return $this->estadoActividad;
+    }
+    public function __toString() {
+        return $this->getIdentificador();
     }
 }

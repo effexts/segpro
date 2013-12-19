@@ -1,69 +1,70 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Fichaproyecto
+/** 
+ * @ORM\Entity(repositoryClass="UTA\SegProBundle\Entity\FichaproyectoRepository")
+ * @ORM\Table(name="fichaproyecto")
  */
 class Fichaproyecto
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="CodigoIdentificacion")
      */
     private $codigoidentificacion;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="NombreCorto")
      */
     private $nombrecorto;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Nombre")
      */
     private $nombre;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="FechaInicio")
      */
     private $fechainicio;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="FechaTermino")
      */
     private $fechatermino;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=false, name="FechaPostulacion")
      */
     private $fechapostulacion;
 
-    /**
-     * @var \DateTime
+    /** 
+     * @ORM\Column(type="date", nullable=true, name="FechaAdjudicacion")
      */
     private $fechaadjudicacion;
 
-    /**
-     * @var integer
+    /** 
+     * @ORM\Column(type="bigint", nullable=false, name="montoAdjudicado")
      */
     private $montoadjudicado;
 
-    /**
-     * @var \UTA\SegProBundle\Entity\Estadoproyecto
+    /** 
+     * @ORM\ManyToOne(targetEntity="UTA\SegProBundle\Entity\Estadoproyecto")
+     * @ORM\JoinColumn(name="estadoproyecto_id", referencedColumnName="id", unique=false)
      */
-    private $estadoproyect;
+    private $estadoproyecto;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
+    /** 
+     * @ORM\OneToMany(targetEntity="UTA\SegProBundle\Entity\Objetivos", mappedBy="ficha")
      */
     private $objetivos;
-
     /**
      * Constructor
      */
@@ -267,26 +268,26 @@ class Fichaproyecto
     }
 
     /**
-     * Set estadoproyect
+     * Set estadoproyecto
      *
-     * @param \UTA\SegProBundle\Entity\Estadoproyecto $estadoproyect
+     * @param \UTA\SegProBundle\Entity\Estadoproyecto $estadoproyecto
      * @return Fichaproyecto
      */
-    public function setEstadoproyect(\UTA\SegProBundle\Entity\Estadoproyecto $estadoproyect = null)
+    public function setEstadoproyecto(\UTA\SegProBundle\Entity\Estadoproyecto $estadoproyecto = null)
     {
-        $this->estadoproyect = $estadoproyect;
+        $this->estadoproyecto = $estadoproyecto;
     
         return $this;
     }
 
     /**
-     * Get estadoproyect
+     * Get estadoproyecto
      *
      * @return \UTA\SegProBundle\Entity\Estadoproyecto 
      */
-    public function getEstadoproyect()
+    public function getEstadoproyecto()
     {
-        return $this->estadoproyect;
+        return $this->estadoproyecto;
     }
 
     /**
@@ -322,9 +323,7 @@ class Fichaproyecto
         return $this->objetivos;
     }
 
-
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getNombrecorto();
     }
 }

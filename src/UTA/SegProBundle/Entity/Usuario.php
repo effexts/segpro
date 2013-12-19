@@ -1,61 +1,70 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
-
-
-/**
- * Usuario
+use Doctrine\ORM\Mapping AS ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="usuario")
  */
-class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInterface, \Serializable
+class Usuario implements AdvancedUserInterface, \Serializable
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
+    
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Nombre")
      */
     private $nombre;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Apellido")
      */
     private $apellido;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", unique=true, length=25, nullable=false, name="Usuario")
      */
     private $username;
-
+    
     /**
-     * @var string
+     * @ORM\Column(type="string", nullable=true, name="Correo")
+     */
+    private $correo;
+
+    /** 
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     private $salt;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $password;
 
-    /**
-     * @var boolean
+    /** 
+     * @ORM\Column(type="boolean", nullable=true, name="is_active")
      */
     private $isActive;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
+    /** 
+     * @ORM\ManyToMany(targetEntity="UTA\SegProBundle\Entity\Segpro", inversedBy="users", cascade={"persist","remove"})
+     * @ORM\JoinTable(
+     *     name="segpro_usuarios", 
+     *     joinColumns={}, 
+     *     inverseJoinColumns={@ORM\JoinColumn(name="Segpro_id", referencedColumnName="id")}
+     * )
      */
     private $segprouser;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
+    /** 
+     * @ORM\ManyToMany(targetEntity="UTA\SegProBundle\Entity\Cargo", inversedBy="users", cascade={"persist","remove"})
+     * @ORM\JoinTable(name="users_cargo", joinColumns={}, inverseJoinColumns={})
      */
     private $roles;
-
     /**
      * Constructor
      */
@@ -177,8 +186,6 @@ class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInter
      */
     public function setPassword($password)
     {
-//        $encoder = new MessageDigestPasswordEncoder('sha1', false, 1);
-//        $passwd = $encoder->encodePassword($password, $this->getSalt());
         $this->password = $password;
     
         return $this;
@@ -249,17 +256,14 @@ class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInter
     {
         return $this->segprouser;
     }
+    /*  setSegprouser, ver si es verdad el problema de los errores   */
 
-/*  setSegprouser, ver si es verdad el problema de los errores   */
-    public function setSegprouser(\Doctrine\Common\Collections\Collection $segprousers)
-    {
+    public function setSegprouser(\Doctrine\Common\Collections\Collection $segprousers) {
         $this->segprouser = $segprousers;
 //        foreach ($segprousers as $spuser) {
 //            $spuser->    setSegpros($this);
 //        }
-    
     }
-    
     /**
      * Add roles
      *
@@ -269,7 +273,6 @@ class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInter
     public function addRole(\UTA\SegProBundle\Entity\Cargo $roles)
     {
         $this->roles[] = $roles;
-//        $roles->addUser($this);
     
         return $this;
     }
@@ -294,6 +297,10 @@ class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInter
         return $this->roles->toArray();
     }
 
+    public function setRoles(\Doctrine\Common\Collections\Collection $rolesuser) {
+        $this->roles = $rolesuser;
+    }
+    
     public function eraseCredentials() {
         
     }
@@ -315,18 +322,38 @@ class Usuario implements \Symfony\Component\Security\Core\User\AdvancedUserInter
     }
 
     public function serialize() {
-        return serialize(array(
-            $this->id,
-        ));
+        return serialize(array($this->id,));
     }
 
     public function unserialize($serialized) {
-        list(
-                $this->id,
-        ) = unserialize($serialized);
+        list($this->id,) = unserialize($serialized);
     }
-
+    
     public function __toString() {
         return $this->nombre." ".$this->apellido;
+    }
+
+
+    /**
+     * Set correo
+     *
+     * @param string $correo
+     * @return Usuario
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+    
+        return $this;
+    }
+
+    /**
+     * Get correo
+     *
+     * @return string 
+     */
+    public function getCorreo()
+    {
+        return $this->correo;
     }
 }

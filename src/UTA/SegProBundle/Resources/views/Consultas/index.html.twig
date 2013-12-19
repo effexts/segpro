@@ -1,0 +1,25 @@
+{% extends 'UTASegProBundle::layout.html.twig' %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block proy %}
+
+<div class="large-12 columns">
+    <div class="panel clear-fix">
+        {{ form_start(form) }}
+        {{ form_label(form.year,'', {'label_attr': {'class': 'label'}}) }}
+        {{ form_widget(form.year) }}
+        {{ form_errors(form.year) }}
+        {{ form_label(form.fuente,'', { 'label_attr': { 'class': 'label' } }) }}
+        {{ form_widget(form.fuente) }}
+        {{ form_errors(form.fuente) }}
+        {{ form_label(form.Buscar) }}
+        {{ form_widget(form.Buscar) }}
+        
+        
+        {{ form_rest(form) }}
+    </div>
+</div>
+
+{% endblock %}

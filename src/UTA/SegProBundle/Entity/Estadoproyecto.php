@@ -1,24 +1,24 @@
 <?php
-
 namespace UTA\SegProBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Estadoproyecto
+/** 
+ * @ORM\Entity
+ * @ORM\Table(name="estadoproyecto")
  */
 class Estadoproyecto
 {
-    /**
-     * @var integer
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @var string
+    /** 
+     * @ORM\Column(type="string", length=255, nullable=false, name="Descripcion")
      */
     private $descripcion;
-
 
     /**
      * Get id
@@ -53,9 +53,7 @@ class Estadoproyecto
         return $this->descripcion;
     }
 
-    public function __toString()
-    {
+    public function __toString() {
         return $this->getDescripcion();
     }
-
 }
